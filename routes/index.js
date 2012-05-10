@@ -8,13 +8,68 @@ exports.index = function(req, res){
 		],
 		title: 'mypage',
 		name: 'K',
-		projects: mysql.projects
+		projects: mysql.db.projects
 	});
 };
-exports.users = function(req, res){
+
+exports.institutes = function(req, res){
     res.render('main', {
 			user: 'K'
 		});
 		//dust.stream.on('error', console.log(error));
+};
+
+exports.newInstitute = function(req, res){
+    res.render('main', {
+			user: 'K'
+		});
+};
+
+exports.members = function(req, res){
+    res.render('main', {
+			user: 'K'
+		});
+};
+
+exports.newMember = function(req, res){
+    res.render('main', {
+			user: 'K'
+		});
+};
+
+exports.projects = function(req, res){
+    res.render('main', {
+			user: 'K'
+		});
+};
+
+exports.newProject = function(req, res){
+    res.render('main', {
+			user: 'K'
+		});
+};
+
+exports.teachers = function(req, res){
+    res.render('main', {
+			user: 'K'
+		});
+};
+
+exports.newTeacher = function(req, res){
+    res.render('main', {
+			user: 'K'
+		});
+};
+
+exports.teams = function(req, res){
+    res.render('main', {
+			user: 'K'
+		});
+};
+
+exports.newTeam = function(req, res){
+    res.render('main', {
+			user: 'K'
+		});
 };
 
