@@ -31,16 +31,16 @@ app.configure('production', function(){
 // Routesnpm ERR! Couldn't read dependencies.
 
 app.get('/', routes.index);
-app.get('/institutes', routes.institutes);
-app.get('/institutes/new', routes.newInstitute);
-app.get('/members', routes.members);
-app.get('/members/new', routes.newMember);
-app.get('/projects', routes.projects);
-app.get('/projects/new', routes.newProject);
-app.get('/teachers', routes.teachers);
-app.get('/teachers/new', routes.newTeacher);
-app.get('/teams', routes.teams);
-app.get('/teams/new', routes.newTeam);
+app.get('/Institutes', routes.institutes);
+app.get('/Institutes/new', routes.newInstitute);
+app.get('/Members', routes.members);
+app.get('/Members/new', routes.newMember);
+app.get('/Projects', routes.projects);
+app.get('/Projects/new', routes.newProject);
+app.get('/Teachers', routes.teachers);
+app.get('/Teachers/new', routes.newTeacher);
+app.get('/Teams', routes.teams);
+app.get('/Teams/new', routes.newTeam);
 
 app.listen(3001, function(){
   console.log("Express server listening on port %d in %s mode", app.address().port, app.settings.env);
