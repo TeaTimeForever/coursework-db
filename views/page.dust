@@ -1,0 +1,28 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	{#scripts}
+		<script src="{src}"></script>
+	{/scripts}
+	<title>{+title}{title}{/title}</title>
+</head>
+<body>
+	{+main}
+		{#projects}
+			id: {id} <br>
+			unover_id: {university_id} <br>
+			name: {name} <br>
+			start: {start_date} <br>
+			end: {end_date} <br>
+			mark: {mark} <br>
+			description: {description} <br>
+			<br>
+		{/projects}
+	{/main}
+	<br>
+	{+footer} 
+		lalala
+	{/footer}
+</body>
+</html>
