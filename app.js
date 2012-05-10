@@ -41,6 +41,8 @@ app.get('/Students/:personalCode', routes.oneStudent);
 
 app.get('/Projects', routes.projects);
 app.get('/Projects/new', routes.newProject);
+app.get('/Projects/:id', routes.oneProject);
+
 app.get('/Teachers', routes.teachers);
 app.get('/Teachers/new', routes.newTeacher);
 app.get('/Teams', routes.teams);

@@ -1,0 +1,15 @@
+{>page/}
+
+{<main}
+	{#project}
+  	Name: {name} <br>
+		{#institute}
+			Institute: {name} <br>
+  	{/institute}
+  	Start date: {start_date} <br>
+  	Finish date: {end_date} <br>
+  	Mark: {mark} <br>
+  	Description: {description} <br>
+{/project}
+{/main}
+

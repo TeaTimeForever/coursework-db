@@ -12,35 +12,35 @@ exports.index = function(req, res){
 };
 
 exports.institutes = function(req, res){
-    res.render('institutes', {
-			institutes: mysql.db.schools
-		});
-		//dust.stream.on('error', console.log(error));
+  res.render('institutes', {
+		institutes: mysql.db.schools
+	});
+	//dust.stream.on('error', console.log(error));
 };
 
 exports.newInstitute = function(req, res){
-    res.render('main', {
-			user: 'K'
-		});
+  res.render('main', {
+		user: 'K'
+	});
 };
 
 exports.oneInstitute = function(req, res){
-		var id = req.params.id
-    res.render('instituteItem', {
-			institute: 	mysql.db.schools[id-1]
-		});
+	var id = req.params.id
+  res.render('instituteItem', {
+		institute: 	mysql.db.schools[id-1]
+	});
 };
 
 exports.students = function(req, res){
-    res.render('students', {
-			students: mysql.db.students
-		});
+  res.render('students', {
+		students: mysql.db.students
+	});
 };
 
 exports.newStudent = function(req, res){
-    res.render('main', {
-			user: 'K'
-		});
+  res.render('main', {
+		user: 'K'
+	});
 };
 
 exports.oneStudent = function(req, res){
@@ -59,38 +59,47 @@ exports.oneStudent = function(req, res){
 };
 
 exports.projects = function(req, res){
-    res.render('main', {
-			user: 'K'
-		});
+  res.render('projects', {
+		projects: mysql.db.projects
+	});
 };
 
 exports.newProject = function(req, res){
-    res.render('main', {
-			user: 'K'
-		});
+  res.render('main', {
+		user: 'K'
+	});
 };
 
+exports.oneProject = function(req, res){
+	var id = req.params.id
+  res.render('projectItem', {
+		project: 	mysql.db.projects[id-1],
+		institute: mysql.db.schools[id-1]
+	});
+};
+
+
 exports.teachers = function(req, res){
-    res.render('main', {
-			user: 'K'
-		});
+  res.render('main', {
+		user: 'K'
+	});
 };
 
 exports.newTeacher = function(req, res){
-    res.render('main', {
-			user: 'K'
-		});
+  res.render('main', {
+		user: 'K'
+	});
 };
 
 exports.teams = function(req, res){
-    res.render('main', {
-			user: 'K'
-		});
+  res.render('main', {
+		user: 'K'
+	});
 };
 
 exports.newTeam = function(req, res){
-    res.render('main', {
-			user: 'K'
-		});
+  res.render('main', {
+		user: 'K'
+	});
 };
 
