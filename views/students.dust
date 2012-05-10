@@ -1,0 +1,16 @@
+{>page/}
+
+{<main}
+	{#students}
+  	<a class="item" href="/students/{personal_code}">
+  		{firstname} {lastname}
+  	</a>
+	<br>
+	{/students}
+	
+	<br>
+	<br>
+
+	<a class="add-new" href="Students/new">Add new student</a>
+{/main}
+

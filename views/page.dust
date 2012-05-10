@@ -9,16 +9,10 @@
 </head>
 <body>
 	{+main}
-		{#projects}
-			id: {id} <br>
-			unover_id: {university_id} <br>
-			name: {name} <br>
-			start: {start_date} <br>
-			end: {end_date} <br>
-			mark: {mark} <br>
-			description: {description} <br>
+		{#selections}
+			<a class="selections" href="/{.}">{.}</a>
 			<br>
-		{/projects}
+		{/selections}
 	{/main}
 	<br>
 	{+footer} 

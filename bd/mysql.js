@@ -7,6 +7,7 @@ var user = mysql.createClient({
 	database: 'dossee'
 });
 
+var db = {};
 var projects = 'projects'
 	, students = 'students'
 	, teachers = 'teachers'
@@ -18,37 +19,38 @@ var projects = 'projects'
 user.query(
 	"select * from " + projects 
 , function(err, res, fields){
-	exports.projects = res;
+	db.projects = res;
 });
 
 user.query(
 	"select * from " + students 
 , function(err, res, fields){
-	exports.students = res;
+	db.students = res;
 });
 
 user.query(
 	"select * from " + teachers
 , function(err, res, fields){
-	exports.teachers = res;
+	db.teachers = res;
 });
 
 user.query(
 	"select * from " + teams
 , function(err, res, fields){
-	exports.teams = res;
+	db.teams = res;
 });
 
 user.query(
 	"select * from " + teamMemb 
 , function(err, res, fields){
-	exports.members = res;
+	db.members = res;
 });
 
 user.query(
 	"select * from " + schools
 , function(err, res, fields){
-	exports.schools = res;
+	db.schools = res;
 	user.end();
 });
 
+exports.db = db;

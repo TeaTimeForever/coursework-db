@@ -7,7 +7,7 @@ exports.index = function(req, res){
 			{ src: 'http://cdnjs.cloudflare.com/ajax/libs/jquery/1.7.2/jquery.min.js' }
 		],
 		title: 'Main Page',
-		selections: ['Institutes', 'Members', 'Projects', 'Teachers', 'Teams']	
+		selections: ['Institutes', 'Students', 'Projects', 'Teachers', 'Teams']	
 	});
 };
 
@@ -24,13 +24,13 @@ exports.newInstitute = function(req, res){
 		});
 };
 
-exports.members = function(req, res){
-    res.render('main', {
-			user: 'K'
+exports.students = function(req, res){
+    res.render('students', {
+			students: mysql.db.students
 		});
 };
 
-exports.newMember = function(req, res){
+exports.newStudent = function(req, res){
     res.render('main', {
 			user: 'K'
 		});
