@@ -45,6 +45,8 @@ app.get('/Projects/:id', routes.oneProject);
 
 app.get('/Teachers', routes.teachers);
 app.get('/Teachers/new', routes.newTeacher);
+app.get('/Teachers/:personalCode', routes.oneTeacher);
+
 app.get('/Teams', routes.teams);
 app.get('/Teams/new', routes.newTeam);
 

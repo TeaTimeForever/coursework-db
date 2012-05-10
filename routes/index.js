@@ -80,14 +80,29 @@ exports.oneProject = function(req, res){
 
 
 exports.teachers = function(req, res){
-  res.render('main', {
-		user: 'K'
+  res.render('teachers', {
+		teachers: mysql.db.teachers
 	});
 };
 
 exports.newTeacher = function(req, res){
   res.render('main', {
 		user: 'K'
+	});
+};
+
+exports.oneTeacher = function(req, res){
+	var pCode = req.params.personalCode;
+	var i;
+	for(i = 0; i < mysql.db.teachers.length; i++){
+		if(mysql.db.teachers[i].personal_code == pCode){
+			break;
+		}
+	}
+
+	res.render('teacherItem', {
+		teacher: mysql.db.teachers[i],
+		institute: mysql.db.schools[mysql.db.teachers[i].university_id - 1]
 	});
 };
 

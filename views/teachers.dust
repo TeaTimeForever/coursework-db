@@ -1,0 +1,16 @@
+{>page/}
+
+{<main}
+	{#teachers}
+  	<a class="item" href="/Teachers/{personal_code}">
+  		{Firstname} {Lastname}
+  	</a>
+	<br>
+	{/teachers}
+	
+	<br>
+	<br>
+
+	<a class="add-new" href="Teachers/new">Add new Teacher</a>
+{/main}
+

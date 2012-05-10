@@ -1,0 +1,13 @@
+{>page/}
+
+{<main}
+	{#teacher}{#institute}
+  	Name: {Firstname} {Lastname} <br>
+		Institute: {name} <br>
+		Country: {country} <br>
+  	Personal code: {personal_code} <br>
+  	Specialty: {specialty} <br>
+  	Email: {email} <br>
+	{/institute}{/teacher}
+{/main}
+
