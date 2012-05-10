@@ -1,0 +1,9 @@
+{>page/}
+
+{<main}
+	{#institutes}
+	<a class="item" href="/Institutes/{id}">{name} </a> &nbsp; {country}
+	<br>
+	{/institutes}
+
+{/main}

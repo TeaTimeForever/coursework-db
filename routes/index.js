@@ -12,8 +12,8 @@ exports.index = function(req, res){
 };
 
 exports.institutes = function(req, res){
-    res.render('main', {
-			user: 'K'
+    res.render('institutes', {
+			institutes: mysql.db.schools
 		});
 		//dust.stream.on('error', console.log(error));
 };
