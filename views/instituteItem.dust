@@ -1,0 +1,11 @@
+{>page/}
+
+{<main}
+	{#institute}
+  	Name: {name} <br>
+  	Country: {country} <br>
+  	Address: {address} <br>
+  	Postal Code: {postal_code} <br>
+	{/institute}
+{/main}
+

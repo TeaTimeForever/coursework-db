@@ -1,0 +1,16 @@
+{>page/}
+
+{<main}
+	{#student}{#institute}
+  	Name: {firstname} {lastname} <br>
+		Institute: {name} <br>
+		Country: {country} <br>
+  	Personal code: {personal_code} <br>
+  	Specialty: {specialty} <br>
+		Education Step: {education_step} <br>
+  	Email: {email} <br>
+		Mark: {mark} <br>
+		Description: {description} <br>
+	{/institute}{/student}
+{/main}
+

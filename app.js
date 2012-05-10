@@ -33,8 +33,12 @@ app.configure('production', function(){
 app.get('/', routes.index);
 app.get('/Institutes', routes.institutes);
 app.get('/Institutes/new', routes.newInstitute);
+app.get('/Institutes/:id', routes.oneInstitute);
+
 app.get('/Students', routes.students);
 app.get('/Students/new', routes.newStudent);
+app.get('/Students/:personalCode', routes.oneStudent);
+
 app.get('/Projects', routes.projects);
 app.get('/Projects/new', routes.newProject);
 app.get('/Teachers', routes.teachers);
