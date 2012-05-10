@@ -6,9 +6,8 @@ exports.index = function(req, res){
 			{ src: 'http://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.3.3/underscore-min.js' },
 			{ src: 'http://cdnjs.cloudflare.com/ajax/libs/jquery/1.7.2/jquery.min.js' }
 		],
-		title: 'mypage',
-		name: 'K',
-		projects: mysql.db.projects
+		title: 'Main Page',
+		selections: ['Institutes', 'Members', 'Projects', 'Teachers', 'Teams']	
 	});
 };
 
