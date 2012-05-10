@@ -5,5 +5,10 @@
 	<a class="item" href="/Institutes/{id}">{name} </a> &nbsp; {country}
 	<br>
 	{/institutes}
+	
+	<br>
+	<br>
 
+	<a class="add-new" href="Institutes/new">Add new Institute</a>
 {/main}
+
