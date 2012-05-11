@@ -1,0 +1,14 @@
+{>page/}
+
+{<main}
+	{#team}
+		Name: {name}
+	{/teams}
+	<br>
+	<br>
+	{#teamMem}
+		Name: <a href="/Students/{personal_code}">{firstname} {lastname}</a>
+		<br>
+	{/teamMem}
+{/main}
+

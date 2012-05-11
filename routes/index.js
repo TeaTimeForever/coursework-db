@@ -107,14 +107,38 @@ exports.oneTeacher = function(req, res){
 };
 
 exports.teams = function(req, res){
-  res.render('main', {
-		user: 'K'
+  res.render('teams', {
+		teams: mysql.db.teams
 	});
 };
 
 exports.newTeam = function(req, res){
   res.render('main', {
 		user: 'K'
+	});
+};
+
+exports.oneTeam = function(req, res){
+	var id = req.params.id;
+	var membersCodes = [];
+	var members = [];
+	for(var i = 0; i < mysql.db.members.length; i++){
+		if(mysql.db.members[i].team_id == id){
+			membersCodes.push(mysql.db.members[i]);
+		}
+	}
+	for(var i = 0; i < membersCodes.length; i++){
+		for(var j = 0; j < mysql.db.students.length; j++){
+			if(mysql.db.students[j].personal_code == membersCodes[i].personal_code){
+				mysql.db.students[j].leader = membersCodes[i].is_leader;
+				members.push(mysql.db.students[j]);
+				break;
+			}
+		}
+	}
+  res.render('teamItem', {
+		team: 	mysql.db.teams[id-1],
+		teamMem: members
 	});
 };
 

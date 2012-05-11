@@ -1,0 +1,14 @@
+{>page/}
+
+{<main}
+	{#teams}
+		<a class="item" href="/Teams/{id}">{name}</a>
+		<br>
+	{/teams}
+	
+	<br>
+	<br>
+
+	<a class="add-new" href="/Teams/new">Add new team</a>
+{/main}
+

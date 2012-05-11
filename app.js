@@ -49,6 +49,7 @@ app.get('/Teachers/:personalCode', routes.oneTeacher);
 
 app.get('/Teams', routes.teams);
 app.get('/Teams/new', routes.newTeam);
+app.get('/Teams/:id', routes.oneTeam);
 
 app.listen(3001, function(){
   console.log("Express server listening on port %d in %s mode", app.address().port, app.settings.env);
