@@ -1,8 +1,9 @@
-body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+.selection, .editable, .edit-mode {
+	float: left;
 }
-
-a {
-  color: #00B7FF;
+.edit-mode{
+	display: none;
+}
+.save-button, .edit-button{
+	clear: both;
 }

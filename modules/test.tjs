@@ -1,0 +1,133 @@
+var initDb = require('./base.js')
+	, models = require('./schema.js')
+	, mysql = require('mysql')
+	, _ = require('underscore')
+	, async = require('async')
+;
+
+var db = mysql.createClient({
+	user: 'eq',
+	password: 'hjvfirf',
+	host: '127.0.0.1',
+	port: 3306,
+	database: 'dossee'
+});
+
+var collections = initDb(db, models);
+
+var getInstitutes = function(autocb){
+	autocb = autocb || function(){};
+	await {
+		collections.institutes.getMany(defer(err, institutes));
+	}
+	var institutesCollection = {};
+	for(var i = 0, n = institutes.length; i < n; i++){
+		await {
+			institutes[i].getRelated('students', defer(err, students));
+			institutes[i].getRelated('teachers', defer(err, teachers));
+			institutes[i].getRelated('project', defer(err, project));
+		}
+		institutesCollection[i] = institutes[i].data;
+		institutesCollection[i].project = project.data;
+		institutesCollection[i].students = [];
+		institutesCollection[i].teachers = [];
+		for(var j = 0, m = students.length; j < m; j++){
+			institutesCollection[i].students[j] = students[j].data;
+		};
+		for(var j = 0, m = teachers.length; j < m; j++){
+			institutesCollection[i].teachers[j] = teachers[j].data;
+		};
+	};
+//	db.end();
+	return institutesCollection;
+}
+
+// mistakes: team + schema
+var getStudents = function(autocb){
+	autocb = autocb || function(){};
+	await {
+		collections.students.getMany(defer(err, students));
+	}
+	var studentsCollection = {};
+	for(var i = 0, n = students.length; i < n; i++){
+		await {
+			students[i].getRelated('institute', defer(err, institute));
+			students[i].getRelated('team', defer(err, team));
+			students[i].getCrossRelated('team','team', defer(err, team));
+		}
+		studentsCollection[i] = students[i].data;
+		studentsCollection[i].institute = institute.data;
+		studentsCollection[i].team = team.data;
+	};
+//	console.log(studentsCollection);
+	return studentsCollection;
+}
+
+// mistakes: institute + schema
+var getProjects = function(autocb){
+	autocb = autocb || function(){};
+	await {
+		collections.projects.getMany(defer(err, projects));
+	}
+	var projectsCollection = {};
+	for(var i = 0, n = projects.length; i < n; i++){
+		await {
+			projects[i].getRelated('team', defer(err, team));
+			projects[i].getRelated('institute', defer(err, institute));
+		}
+		projectsCollection[i] = projects[i].data;
+		projectsCollection[i].team = team.data;
+		//projectsCollection[i].institute = institute.data;
+	};
+	console.log(projectsCollection);
+	return projectsCollection;
+}
+
+//mistakes: schema
+var getTeams = function(autocb){
+	autocb = autocb || function(){};
+	await {
+		collections.teams.getMany(defer(err, teams));
+	}
+	var teamsCollection = {};
+	for(var i = 0, n = teams.length; i < n; i++){
+		await {
+			teams[i].getRelated('students', defer(err, students));
+			teams[i].getRelated('project', defer(err, project));
+		}
+		teamsCollection[i] = teams[i].data;
+		teamsCollection[i].project = project.data;
+		teamsCollection[i].students = [];
+	};
+	for(var j = 0, m = students.length; j < m; j++){
+		teamsCollection[i].students[j] = students[j].data;
+	};
+
+	return teamsCollection;
+}
+
+var getTeachers = function(autocb){
+	autocb = autocb || function(){};
+	await {
+		collections.teachers.getMany(defer(err, teachers));
+	}
+	var teachersCollection = {};
+	for(var i = 0, n = teachers.length; i < n; i++){
+		await {
+			teachers[i].getRelated('institute', defer(err, institute));
+		}
+		teachersCollection[i] = teachers[i].data;
+		teachersCollection[i].institute = institute.data;
+	};
+
+	console.log(teachersCollection);
+	return teachersCollection;
+}
+
+
+module.exports.institutes = getInstitutes;
+module.exports.students = getStudents;
+module.exports.projects = getProjects;
+module.exports.teams = getTeams;
+module.exports.teachers = getTeachers;
+

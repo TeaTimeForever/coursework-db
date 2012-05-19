@@ -7,6 +7,9 @@
 	<br>
 	<br>
 	{#teamMem}
+		<script>
+			console.log('Hello from node')
+		</script>
 		Name: <a href="/Students/{personal_code}">{firstname} {lastname}</a>
 		<br>
 	{/teamMem}
