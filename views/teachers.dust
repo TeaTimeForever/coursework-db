@@ -1,16 +1,22 @@
 {>page/}
 
 {<main}
-	{#teachers}
-  	<a class="item" href="/Teachers/{personal_code}">
-  		{Firstname} {Lastname}
-  	</a>
+	<div class="action">
+		<div class="sort"></div>
+		<div class="list">
+			{#institutes_}
+				<b>{name}</b><br>
+				{#teachers_}
+					<a class="item" href="/Teachers/{personal_code}">link</a>
+					{fullname}
+					<br>
+				{/teachers_}
+				<br>
+			{/institutes_}
+		</div>
+		<div class="new">	<a class="add-new" href="Teachers/new">+ Add new Project</a></div>
+	</div>
+	<div class="search"></div>
 	<br>
-	{/teachers}
-	
-	<br>
-	<br>
-
-	<a class="add-new" href="Teachers/new">Add new Teacher</a>
 {/main}
 

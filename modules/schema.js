@@ -74,12 +74,17 @@ var models = {
 	teachers: {
 		table: 'teachers',
 		key: 'personal_code',
+		methods: {
+			fullname: function(){
+				return this.Firstname + " " + this.Lastname;
+			}
+		},
 		relations: {
 			institute: {
 				type: 'one',
 				model: 'institutes',
 				join: {
-					institute_id: 'id'
+					university_id: 'id'
 				}
 			}
 		}

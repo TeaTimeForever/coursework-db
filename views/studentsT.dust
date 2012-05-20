@@ -7,9 +7,8 @@
 				<b>{name}</b><br>
 				{#members_}
 					{#students_}
-						<a class="item" href="/Students/{personal_code}">
-							{fullname}
-						</a>
+						<a class="item" href="/Students/{personal_code}">link</a>
+						{fullname}
 					{/students_}
 				<br>
 				{/members_}

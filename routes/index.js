@@ -44,6 +44,10 @@ function start(){
       res.render('projects', all);
     };
 
+    exports.teachers = function(req, res){
+      res.render('teachers', all);
+    };
+
     exports.teams = function(req, res){
       res.render('teams', all);
     };
