@@ -1,9 +1,10 @@
-.selection, .editable, .edit-mode {
-	float: left;
+.main{
+	margin: auto;
+	width: 800px;
 }
-.edit-mode{
-	display: none;
-}
-.save-button, .edit-button{
+.footer{
 	clear: both;
+}
+.goHome {
+	margin: 0 350px;
 }

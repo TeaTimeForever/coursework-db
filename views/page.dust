@@ -1,5 +1,6 @@
 <!DOCTYPE HTML>
 <html lang="en">
+{#meta}
 <head>
 	<meta charset="UTF-8">
 	{#scripts}
@@ -11,15 +12,20 @@
 	<title>{+title}{title}{/title}</title>
 </head>
 <body>
-	{+main}
-		{#selections}
-			<a class="selections" href="/{.}">{.}</a>
-			<br>
-		{/selections}
-	{/main}
-	<br>
-	{+footer} 
-		lalala
-	{/footer}
+	<div class="main">
+		{+main}
+			{#selections}
+				<a class="selections" href="/{.}">{.}</a>
+				<br>
+			{/selections}
+		{/main}
+		<br>
+		<div class="footer">
+			{+footer} 
+				<a href="/" class="goHome">Go to home</a>
+			{/footer}
+		</div>
+	</div>
 </body>
+{/meta}
 </html>

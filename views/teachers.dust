@@ -14,7 +14,7 @@
 				<br>
 			{/institutes_}
 		</div>
-		<div class="new">	<a class="add-new" href="Teachers/new">+ Add new Project</a></div>
+		<div class="new">	<a class="add-new" href="Teachers/new">+ Add new Teachers</a></div>
 	</div>
 	<div class="search"></div>
 	<br>
