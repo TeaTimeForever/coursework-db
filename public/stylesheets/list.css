@@ -1,0 +1,11 @@
+.action, .search{
+	width: 300px;
+	min-height: 100px;
+	float: left;
+}
+.action{
+	background-color: red;
+}
+.search{
+	background-color: green;
+}

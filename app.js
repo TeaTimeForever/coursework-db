@@ -32,7 +32,8 @@ app.configure('production', function(){
 routes.start();
 
 app.get('/', routes.index);
-app.get('/institutes', routes.institutes);
+app.get('/Institutes', routes.institutes);
+app.get('/Projects', routes.projects);
 app.get('/Institutes/new', routes.newInstitute);
 app.get('/Institutes/:id', routes.oneInstitute);
 app.post('/Institutes/edit', routes.newSmth);

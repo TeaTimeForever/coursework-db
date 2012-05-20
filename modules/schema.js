@@ -59,7 +59,7 @@ var models = {
 				type: 'one',
 				model: 'institutes',
 				join: {
-					institute_id: 'id'
+					university_id: 'id'
 				}
 			},
 			team: {

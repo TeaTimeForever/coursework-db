@@ -5,6 +5,7 @@
 	{#scripts}
 		<script src="{src}"></script>
 	{/scripts}
+
 	<title>{+title}{title}{/title}</title>
 </head>
 <body>
