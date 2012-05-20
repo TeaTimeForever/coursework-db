@@ -91,6 +91,14 @@ function start(){
 			var pcode = req.params.personal_code;
       res.render('oneTeacher', all);
     };
+		exports.createTeacher = function(req, res){
+			var tc = req.body.teacher;
+			db.query('insert into teachers ' +
+			 'set Firstname = ?, Lastname = ?, university_id = ?, specialty = ?, email = ?, personal_code = ?', [
+				tc.firstname, tc.lastname, tc.institute_id, tc.specialty, tc.email, tc.personal_code
+			]);
+      res.render('successTeacher', all);
+		}
 
 // TEAMS
     exports.teams = function(req, res){

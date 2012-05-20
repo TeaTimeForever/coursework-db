@@ -1,5 +1,42 @@
 {>page/}
 {<main}
-  new Teacher
+	<div class="create">
+		<form id="create-form" action="/Teachers/create" method="post">
+			<table>
+				<tr>
+					<td>Firstname:</td>
+					<td><input type="text" name="teacher[firstname]" /></td>
+				</tr>
+				<tr>
+					<td>Lastname:</td>
+					<td><input type="text" name="teacher[lastname]" /></td>
+				</tr>
+				<tr>
+					<td>Personal Code:</td>
+					<td><input type="text" name="teacher[personal_code]" /></td>
+				</tr>
+		
+				<tr>
+					<td>Institute:</td>
+					<td>
+						<select type="text" name="teacher[institute_id]" />
+							{#institutes_}<option value="{id}">{name}</option>{/institutes_}
+						</select>
+					</td>
+				</tr>
+				<tr>
+					<td>Specialty:</td>
+					<td><input type="text" name="teacher[specialty]" /></td>
+				</tr>	
+				<tr>
+					<td>email:</td>
+					<td><input type="text" name="teacher[email]" /></td>
+				</tr>
+			</table>
+		</form>	
+	</div>
+	<div class="create-button">Save</div> <br>
+
+
 {/main}
 

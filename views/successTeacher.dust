@@ -1,0 +1,6 @@
+{>page/}
+{<main}
+	teacher successfully created <br>
+	<a href="/Teachers">return</a> to teachers
+{/main}
+
