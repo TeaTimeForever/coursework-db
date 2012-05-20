@@ -1,0 +1,9 @@
+.selection, .editable, .edit-mode {
+	float: left;
+}
+.edit-mode{
+	display: none;
+}
+.save-button, .edit-button{
+	clear: both;
+}

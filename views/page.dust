@@ -5,7 +5,9 @@
 	{#scripts}
 		<script src="{src}"></script>
 	{/scripts}
-
+	{#styles}
+		<link rel="stylesheet" href="{src}" type="text/css"/>
+	{/styles}
 	<title>{+title}{title}{/title}</title>
 </head>
 <body>

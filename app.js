@@ -7,7 +7,20 @@ var express = require('express')
   , routes = require('./routes')
 	, app = express.createServer()
 	, dust = require('express-dust/lib/dust')
+	, stylus = require('stylus')
 ;
+
+function compile(str, path){
+	return stylus(str)
+		.set('filename', path)
+		.set('compress', true);
+}
+
+app.use(stylus.middleware({
+    src: __dirname + '/views'
+  , dest: __dirname + '/public'
+  , compile: compile
+}));
 
 // Configuration
 

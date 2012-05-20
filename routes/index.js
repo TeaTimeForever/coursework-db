@@ -24,7 +24,8 @@ function start(){
     			{ src: 'http://cdnjs.cloudflare.com/ajax/libs/jquery/1.7.2/jquery.min.js' }
     		],
 				styles: [
-					{ src: '/public/stylesheets/list.css'}
+					{ src: '/stylesheets/list.css'},
+					{ src: '/stylesheets/main.css'}
 				],
     		title: 'Main Page',
     		selections: ['Institutes', 'Students', 'Projects', 'Teachers', 'Teams']	
