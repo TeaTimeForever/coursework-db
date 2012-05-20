@@ -1,14 +1,18 @@
 {>page/}
 
 {<main}
-	{#institutes}
-	<a class="item" href="/Institutes/{id}">{name} </a> &nbsp; {country}
-	<br>
-	{/institutes}
-	
-	<br>
-	<br>
+	<div class="action">
+		<div class="sort"></div>
+		<div class="list">
+			{#institutes_}
+				<a class="item" href="/Institutes/{id}">link</a> {name} {country}
+				<br>
+			{/institutes_}
+		</div>
+		<div class="new">	<a class="add-new" href="Institutes/new">Add new Institute</a></div>
+	</div>
+	<div class="search"></div>
 
-	<a class="add-new" href="Institutes/new">Add new Institute</a>
+	<br>
 {/main}
 
