@@ -64,10 +64,12 @@ app.get('/Students', routes.studentsI); // by default - sort by Institutes
 app.get('/StudentsT', routes.studentsT);
 app.get('/Students/new', routes.newStudent);
 app.get('/Students/:personal_code', routes.oneStudent);
+app.post('/Students/create', routes.createStudent);
 
 app.get('/Teachers', routes.teachers);
 app.get('/Teachers/new', routes.newTeacher);
 app.get('/Teachers/:personal_code', routes.oneTeacher);
+app.post('/Teachers/create', routes.createTeacher);
 
 app.get('/test', routes.test);
 app.listen(3001, function(){

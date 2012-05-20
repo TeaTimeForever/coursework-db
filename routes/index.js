@@ -111,6 +111,7 @@ function start(){
 			]);
       res.render('successTeam', all);
 		}
+
 // STUDENTS
     exports.studentsI = function(req, res){
 			//sort by institute
@@ -127,6 +128,14 @@ function start(){
 			var pcode = req.params.personal_code;
       res.render('oneStudent', all);
     };
+		exports.createStudent= function(req, res){
+			var st = req.body.student;
+			db.query('insert into students ' +
+			 'set firstname = ?, lastname = ?, institute_id = ?, education_step = ?, specialty = ?, mark = ?, description = ?, email = ?, personal_code = ?', [
+				st.firstname, st.lastname, st.institute_id, st.education_step, st.specialty, st.mark, st.description, st.email, st.personal_code
+			]);
+      res.render('successStudent', all);
+		}
 
 }
 

@@ -1,5 +1,67 @@
 {>page/}
 {<main}
-  new Student
+	<div class="create">
+		<form id="create-form" action="/Students/create" method="post">
+			<table>
+				<tr>
+					<td>Firstname:</td>
+					<td><input type="text" name="student[firstname]" /></td>
+				</tr>
+				<tr>
+					<td>Lastname:</td>
+					<td><input type="text" name="student[lastname]" /></td>
+				</tr>
+				<tr>
+					<td>Personal Code:</td>
+					<td><input type="text" name="student[personal_code]" /></td>
+				</tr>
+		
+				<tr>
+					<td>Institute:</td>
+					<td>
+						<select type="text" name="student[institute_id]" />
+							{#institutes_}<option value="{id}">{name}</option>{/institutes_}
+						</select>
+					</td>
+				</tr>
+				<tr>
+					<td>Education step:</td>
+					<td>
+						<select type="text" name="student[institute_id]">
+							<option value="1">1</option>
+							<option value="2">2</option>
+							<option value="3">3</option>
+							<option value="4">4</option>
+						</select>
+					</td>
+				</tr>
+				<tr>
+					<td>Specialty:</td>
+					<td><input type="text" name="student[specialty]" /></td>
+				</tr>	
+				<tr>
+					<td>Mark:</td>
+					<td>
+						<select type="text" name="student[mark]">
+							<option value="1">1</option>
+							<option value="2">2</option>
+							<option value="3">3</option>
+							<option value="4">4</option>
+							<option value="5">5</option>
+						</select>
+					</td>
+				</tr>	
+				<tr>
+					<td>email:</td>
+					<td><input type="text" name="student[email]" /></td>
+				</tr>	
+				<tr>
+					<td>Description:</td>
+					<td><textarea id="" name="students[description]" rows="10" cols="30"></textarea></td>
+				</tr>	
+			</table>
+		</form>	
+	</div>
+	<div class="create-button">Save</div> <br>
 {/main}
 

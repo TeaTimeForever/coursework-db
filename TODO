@@ -1,3 +1,4 @@
 /public/javascripts/createPr.js
 /public/javascripts/createInst.js
 /views/newProject.dust
+/StudentsT и StudentsI - если списки пустые выводить студентов не надо
