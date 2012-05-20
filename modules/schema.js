@@ -29,6 +29,11 @@ var models = {
 	students: {
 		table: 'students',
 		key: 'personal_code',
+		methods: {
+			fullname: function(){
+				return this.firstname + " " + this.lastname;
+			}
+		},
 		relations: {
 			institute: {
 				type: 'one',
@@ -37,7 +42,7 @@ var models = {
 					institute_id: 'id'
 				}
 			},
-			team: {
+			membership: {
 				type: 'one',
 				model: 'teamMemb',
 				join: {
@@ -90,7 +95,7 @@ var models = {
 					project_id: 'id'
 				}
 			},
-			students: {
+			members: {
 				type: 'many',
 				model: 'teamMemb',
 				join: {

@@ -37,6 +37,7 @@ app.get('/Institutes/new', routes.newInstitute);
 app.get('/Institutes/:id', routes.oneInstitute);
 app.post('/Institutes/edit', routes.newSmth);
 
+app.get('/test', routes.test);
 app.listen(3001, function(){
   console.log("Express server listening on port %d in %s mode", app.address().port, app.settings.env);
 });

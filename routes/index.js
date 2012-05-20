@@ -1,6 +1,22 @@
-var mysql = require('../modules/mysql.js');
+var _ = require('underscore')
+	, makeCollections = require('../modules/base.js')
+	, models = require('../modules/schema.js')
+	, mysql = require('mysql')
+	, async = require('async')
+;
+
+var db = mysql.createClient({
+	user: 'eq',
+	password: 'hjvfirf',
+	host: '127.0.0.1',
+	port: 3306,
+	database: 'dossee'
+});
+
+var all = makeCollections(db, models);
+
 function start(){ 
-	mysql.data(function(db){
+//	mysql.data(function(db){
     exports.index = function(req, res){
       res.render('page', {
     		scripts: [
@@ -11,7 +27,11 @@ function start(){
     		selections: ['Institutes', 'Students', 'Projects', 'Teachers', 'Teams']	
     	});
     };
-    
+     
+    exports.test = function(req, res){
+      res.render('test', all);
+		}
+
     exports.institutes = function(req, res){
       res.render('institutes', {
     		institutes: db.institutes
@@ -36,8 +56,7 @@ function start(){
 			console.log(res);
 		}
 		
-		exports.l = 2;
-  });
+//  });
 }
 
 exports.start = start;

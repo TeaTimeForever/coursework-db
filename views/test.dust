@@ -1,0 +1,24 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+
+	<title>lala</title>
+</head>
+<body>
+
+{#institutes_}
+	<a href="/institutes/{id}">{name}</a> <br>
+<ul>{#students_}
+	<li>{fullname} {#membership_}{#team_} {name} {/team_}{/membership_} <br>
+		{:error} error
+		{:else} else
+</li>
+	{/students}
+</ul>
+		 <br>
+	{:else}
+		No Projects!
+{/institutes_}
+</body>
+</html>
