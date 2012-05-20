@@ -1,5 +1,25 @@
 {>page/}
 {<main}
-  new Team
+	<div class="create">
+		<form id="create-form" action="/Teams/create" method="post">
+			<table>
+				<tr>
+					<td>Name:</td>
+					<td><input type="text" name="team[name]" /></td>
+				</tr>
+				<tr>
+					<td>Institute:</td>
+					<td>
+						<select type="text" name="team[project_id]" />
+							{#projects_}<option value="{id}">{name}</option>{/projects_}
+						</select>
+					</td>
+				</tr>
+			</table>
+		</form>	
+	</div>
+	<div class="create-button">Save</div> <br>
+
+
 {/main}
 

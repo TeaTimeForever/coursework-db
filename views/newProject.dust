@@ -1,5 +1,41 @@
+<!--TODO сделать так, чтобы в комбобоксе выводились только те институты у которых нет проектов-->
 {>page/}
 {<main}
- laaaaaaaaaaaaaaaa
+	<div class="create">
+		<form id="create-form" action="/Projects/create" method="post">
+			<table>
+				<tr>
+					<td>Name:</td>
+					<td><input type="text" name="project[name]" /></td>
+				</tr>
+				<tr>
+					<td>Institute:</td>
+					<td>
+						<select type="text" name="project[university_id]" />
+							{#institutes_}<option value="{id}">{name}</option>{/institutes_}
+						</select>
+					</td>
+				</tr>
+				<tr>
+					<td>Start:</td>
+					<td><input type="text" name="project[start_date]" /></td>
+				</tr>
+				<tr>
+					<td>End:</td>
+					<td><input type="text" name="project[end_date]" /></td>
+				</tr>
+				<tr>
+					<td>Mark:</td>
+					<td><input type="text" name="project[mark]" /></td>
+				</tr>
+				<tr>
+					<td>Description:</td>
+					<td><textarea id="" name="project[description]" rows="10" cols="30"></textarea></td>
+				</tr>
+			</table>
+		</form>	
+	</div>
+	<div class="create-button">Save</div> <br>
+
 {/main}
 

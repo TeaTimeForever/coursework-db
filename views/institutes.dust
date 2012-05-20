@@ -9,7 +9,7 @@
 				<br>
 			{/institutes_}
 		</div>
-		<div class="new">	<a class="add-new" href="Institutes/new">Add new Institute</a></div>
+		<div class="new">	<a class="add-new" href="/Institutes/new">Add new Institute</a></div>
 	</div>
 	<div class="search"></div>
 

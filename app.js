@@ -48,14 +48,17 @@ app.get('/', routes.index);
 app.get('/Institutes', routes.institutes);
 app.get('/Institutes/new', routes.newInstitute);
 app.get('/Institutes/:id', routes.oneInstitute);
+app.post('/Institutes/create', routes.createInstitute);
 
 app.get('/Projects', routes.projects);
 app.get('/Projects/new', routes.newProject);
 app.get('/Projects/:id', routes.oneProject);
+app.post('/Projects/create', routes.createProject);
 
 app.get('/Teams', routes.teams);
 app.get('/Teams/new', routes.newTeam);
 app.get('/Teams/:id', routes.oneTeam);
+app.post('/Teams/create', routes.createTeam);
 
 app.get('/Students', routes.studentsI); // by default - sort by Institutes
 app.get('/StudentsT', routes.studentsT);
@@ -65,8 +68,6 @@ app.get('/Students/:personal_code', routes.oneStudent);
 app.get('/Teachers', routes.teachers);
 app.get('/Teachers/new', routes.newTeacher);
 app.get('/Teachers/:personal_code', routes.oneTeacher);
-
-app.post('/Institutes/edit', routes.newSmth);
 
 app.get('/test', routes.test);
 app.listen(3001, function(){

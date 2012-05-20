@@ -1,0 +1,6 @@
+{>page/}
+{<main}
+	project successfully created <br>
+	<a href="/Projects">return</a> to projects
+{/main}
+
