@@ -44,6 +44,20 @@ function start(){
       res.render('projects', all);
     };
 
+    exports.teams = function(req, res){
+      res.render('teams', all);
+    };
+
+    exports.studentsI = function(req, res){
+			//sort by institute
+      res.render('studentsI', all);
+    };
+
+    exports.studentsT = function(req, res){
+			//sort by teams
+      res.render('studentsT', all);
+    };
+
     exports.newInstitute = function(req, res){
       res.render('main', {
     		user: 'K'

@@ -34,6 +34,10 @@ routes.start();
 app.get('/', routes.index);
 app.get('/Institutes', routes.institutes);
 app.get('/Projects', routes.projects);
+app.get('/Teams', routes.teams);
+app.get('/Students', routes.studentsI); // by default - sort by Institutes
+app.get('/StudentsT', routes.studentsT);
+
 app.get('/Institutes/new', routes.newInstitute);
 app.get('/Institutes/:id', routes.oneInstitute);
 app.post('/Institutes/edit', routes.newSmth);

@@ -1,5 +1,4 @@
 {>page/}
-
 {<main}
 	<div class="action">
 		<div class="sort"></div>
@@ -13,10 +12,9 @@
 				<br>
 			{/projects_}
 		</div>
-		<div class="new">	<a class="add-new" href="Projects/new">Add new Project</a></div>
+		<div class="new">	<a class="add-new" href="Projects/new">+ Add new Project</a></div>
 	</div>
 	<div class="search"></div>
-
 	<br>
 {/main}
 
