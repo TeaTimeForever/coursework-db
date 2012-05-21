@@ -12,7 +12,7 @@
 					<td>Institute:</td>
 					<td>
 						<select type="text" name="project[university_id]" />
-							{#institutes_}<option value="{id}">{name}</option>{/institutes_}
+							{#root}<option value="{id}">{name}</option>{/root}
 						</select>
 					</td>
 				</tr>
@@ -36,6 +36,5 @@
 		</form>	
 	</div>
 	<div class="create-button">Save</div> <br>
-
 {/main}
 

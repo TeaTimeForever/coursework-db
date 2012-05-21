@@ -13,7 +13,13 @@ var db = mysql.createClient({
 	database: 'dossee'
 });
 
-function addMeta(obj){
+function addMeta(root){
+	if(typeof(root) === 'function'){
+		root = root.dustify();
+	}
+	obj = {
+		root: root
+	};
 	obj.meta ={
 		scripts: [
 			{ src: 'http://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.3.3/underscore-min.js' },
@@ -36,28 +42,29 @@ function addMeta(obj){
 		title: 'Main Page',
 		selections: ['Institutes', 'Students', 'Projects', 'Teachers', 'Teams']	
 	}
-	return obj; 
+	return obj;
+; 
 }
 
-var all = addMeta(makeCollections(db, models));
+var all = makeCollections(db, models);
 
 function start(){ 
   exports.index = function(req, res){
-			res.render('page', all);
+			res.render('page', addMeta(all));
     };
    
 // INSTITUTES
     exports.institutes = function(req, res){
-      res.render('institutes', all);
+      res.render('institutes', addMeta(all.institutes));
     };
     exports.newInstitute = function(req, res){
-      res.render('newInstitute', all);
+      res.render('newInstitute', addMeta());
     };
     exports.oneInstitute = function(req, res){
 			var id = req.params.id;
-      res.render('oneInstitute', addMeta({
-				institute: all.institutes({id: id}).dustify()
-			}));
+      res.render('oneInstitute', addMeta(
+				all.institutes({where:{id: id}})
+			));
     };
 		exports.createInstitute = function(req, res){
 			var inst = req.body.institute;
@@ -65,12 +72,12 @@ function start(){
 			 'set name = ?, country = ?, address = ?, postal_code = ?', [
 				inst.name, inst.country, inst.address, inst.postal_code
 			]);
-      res.render('successInstitute', all);
+      res.render('successInstitute', addMeta());
 		};
 		exports.deleteInstitute = function(req, res){
 			var id = req.params.id;
 			db.query('delete from institutes where id = ' + id);
-      res.render('successDelInstitute', all);
+      res.render('successDelInstitute', addMeta(all));
 		};
   	exports.editInstitute = function(req, res){
 			var id = req.params.id;
@@ -79,9 +86,9 @@ function start(){
 				"set name = '" + inst.name + "', address =  '" + inst.address + "', postal_code = '" + inst.postal_code + "' " +
 				 "where id=" + id
 			)
-      res.render('oneInstitute', addMeta({
-				institute: all.institutes({id: id}).dustify()
-			}));
+      res.render('oneInstitute', addMeta(
+				all.institutes({where:{id: id}})
+			));
 		};
 
 // PROJECTS
@@ -89,13 +96,15 @@ function start(){
       res.render('projects', all);
     };
     exports.newProject = function(req, res){
-      res.render('newProject', all);
+      res.render('newProject', addMeta(all.institutes({
+				sql: "select * from institutes where id < 3"})
+			));
     };
     exports.oneProject = function(req, res){
 			var id = req.params.id;
-      res.render('oneProject', addMeta({
-				project: all.projects({id: id}).dustify()
-			}));
+      res.render('oneProject', addMeta(
+				all.projects({where:{id: id}})
+			));
     };
 		exports.createProject = function(req, res){
 			var proj = req.body.project;
@@ -103,24 +112,24 @@ function start(){
 			 'set name = ?, university_id = ?, start_date = ?, end_date = ?, mark = ?, description = ?', [
 				proj.name, proj.university_id, proj.start_date, proj.end_date, proj.mark, proj.description
 			]);
-      res.render('successProject', all);
+      res.render('successProject', addMeta());
 		}
 		exports.deleteProject = function(req, res){
 			var id = req.params.id;
 			db.query('delete from projects where id = ' + id);
-      res.render('successDelProject', all);
+      res.render('successDelProject', addMeta());
 		};
 
 //TEACHERS
     exports.teachers = function(req, res){
-      res.render('teachers', all);
+      res.render('teachers', addMeta(all.teachers));
     };
     exports.newTeacher = function(req, res){
-      res.render('newTeacher', all);
+      res.render('newTeacher', addMeta(all));
     };
     exports.oneTeacher = function(req, res){
 			var pcode = req.params.personal_code;
-      res.render('oneTeacher', all);
+      res.render('oneTeacher', addMeta(all.teachers({where: {personal_code: pcode}})));
     };
 		exports.createTeacher = function(req, res){
 			var tc = req.body.teacher;
@@ -128,19 +137,19 @@ function start(){
 			 'set Firstname = ?, Lastname = ?, university_id = ?, specialty = ?, email = ?, personal_code = ?', [
 				tc.firstname, tc.lastname, tc.institute_id, tc.specialty, tc.email, tc.personal_code
 			]);
-      res.render('successTeacher', all);
+      res.render('successTeacher', addMeta(all));
 		}
 
 // TEAMS
     exports.teams = function(req, res){
-      res.render('teams', all[teams_]);
+      res.render('teams', addMeta(all.teams));
     };
     exports.newTeam= function(req, res){
-      res.render('newTeam', all);
+      res.render('newTeam', addMeta(all));
     };
     exports.oneTeam= function(req, res){
 			var id = req.params.id;
-      res.render('oneTeam', all);
+      res.render('oneTeam', addMeta(all.teams({where: {id: id}})));
     };
 		exports.createTeam = function(req, res){
 			var team = req.body.team;
@@ -148,24 +157,24 @@ function start(){
 			 'set name = ?, project_id = ?', [
 				team.name, team.project_id
 			]);
-      res.render('successTeam', all);
+      res.render('successTeam', addMeta(all));
 		}
 
 // STUDENTS
     exports.studentsI = function(req, res){
 			//sort by institute
-      res.render('studentsI', all);
+      res.render('studentsI', addMeta(all));
     };
     exports.studentsT = function(req, res){
 			//sort by teams
-      res.render('studentsT', all);
+      res.render('studentsT', addMeta(all));
     };
     exports.newStudent = function(req, res){
-      res.render('newStudent', all);
+      res.render('newStudent', addMeta(all));
     };
     exports.oneStudent = function(req, res){
 			var pcode = req.params.personal_code;
-      res.render('oneStudent', all);
+      res.render('oneStudent', addMeta(all.students({where: {personal_code: pcode}})));
     };
 		exports.createStudent= function(req, res){
 			var st = req.body.student;
@@ -173,9 +182,10 @@ function start(){
 			 'set firstname = ?, lastname = ?, institute_id = ?, education_step = ?, specialty = ?, mark = ?, description = ?, email = ?, personal_code = ?', [
 				st.firstname, st.lastname, st.institute_id, st.education_step, st.specialty, st.mark, st.description, st.email, st.personal_code
 			]);
-      res.render('successStudent', all);
+      res.render('successStudent', addMeta());
 		}
-
+		exports.studentsOrd = function(req, res){
+			res.render('studentsOrd', addMeta(all.students({order: [req.params.by]})));
+		}
 }
-
 exports.start = start;

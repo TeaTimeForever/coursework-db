@@ -68,6 +68,7 @@ app.post('/Teams/create', routes.createTeam);
 
 app.get('/Students', routes.studentsI); // by default - sort by Institutes
 app.get('/StudentsT', routes.studentsT);
+app.get('/StudentsOrd/:by', routes.studentsOrd);
 app.get('/Students/new', routes.newStudent);
 app.get('/Students/:personal_code', routes.oneStudent);
 app.post('/Students/create', routes.createStudent);

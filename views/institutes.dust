@@ -4,10 +4,10 @@
 	<div class="action">
 		<div class="sort"></div>
 		<div class="list">
-			{#institutes_}
+			{#root}
 				<a class="item" href="/Institutes/{id}">link</a> {name} {country}
 				<br>
-			{/institutes_}
+			{/root}
 		</div>
 		<div class="new">	<a class="add-new" href="/Institutes/new">Add new Institute</a></div>
 	</div>

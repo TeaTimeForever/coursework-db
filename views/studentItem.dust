@@ -1,7 +1,7 @@
 {>page/}
 
 {<main}
-	{#student}{#institute}
+	{#root}{#institute}
   	Name: {firstname} {lastname} <br>
 		Institute: {name} <br>
 		Country: {country} <br>
@@ -11,6 +11,6 @@
   	Email: {email} <br>
 		Mark: {mark} <br>
 		Description: {description} <br>
-	{/institute}{/student}
+	{/institute}{/root}
 {/main}
 

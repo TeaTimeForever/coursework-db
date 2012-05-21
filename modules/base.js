@@ -54,7 +54,9 @@ function makeCollections(db, models){
 	}
 	function makeCondition(condition){
 		var type = typeof(condition);
-		if(type == 'string'){
+		if(type == 'undefined'){
+			return "";
+		} else if(type == 'string'){
 			return condition;
 		} else if(type == 'array'){
 			return _(condition).map(makeCondition).reduce(function(a, b){
@@ -76,15 +78,88 @@ function makeCollections(db, models){
 		}
 		return res;
 	}
-	var getMany = function(condition, cb){
-		var self = this;
-		var result = [];
-		if(typeof(condition) == 'function'){
-			cb = condition;
-			condition = '';
-		} 
 
-		var sql = 'select * from ' + this.model.table + makeWhere(condition); 
+	function makeFrom(source){
+		return " from " + source.table + " ";
+	}
+	
+	function as(alias, value){
+		return value + " as " + alias;
+	}
+	
+	function makeColumns(columns){
+		var type = typeof(columns);
+		if(type == 'undefined'){
+			return " * ";
+		}	else if(type == 'string'){
+			return columns;
+		} else if(type == 'array'){
+			return _(columns).map(makeColumns).reduce(function(a, b){
+				return a==""? b: a + ", " + b
+			}, "");
+		} else if(type == 'object'){
+			return _(columns).reduce(function(a,b,c){
+				return a==""? as(c,b): a + ", " + as(c,b)
+			}, "")
+		}
+	};
+
+	function makeSelect(select){
+		return res = "select " + makeColumns(select);
+	}
+	
+	function makePage(page){
+		if(page === undefined){
+			return " ";
+		}
+		return " limit " + page.count + " offset " + page.count * (page.num - 1);
+	}
+
+	function ord(column, dir){
+		return column + " " + dir;
+	}
+
+	function makeOrder(order){
+		if(_.isString(order)){
+			return order;
+		} else if(_.isArray(order)){
+			return _(order).map(makeCondition).reduce(function(a, b){
+				return a==''? b: a + ", " + b;
+			}, "");
+		} else if(_.isObject(order)){
+			return _(order).reduce(function(a,b,c){
+				return a==''? ord(c,b): a + " , " + ord(c,b)
+			}, "")
+		}
+	}
+
+	function makeOrderBy(order){
+		if(order === undefined){
+			return " ";
+		}
+		return " order by " + makeOrder(order);
+	}
+	var getMany = function(params, cb){
+		var self = this;
+		var sql;
+		var result = [];
+		if(typeof(params) == 'function'){
+			cb = params;
+			params = '';
+		} 
+		if(params === undefined){
+			params = {};
+		}
+		if(params.sql){
+			sql = params.sql;
+		} else {
+			select = makeSelect(params.select);
+			from = makeFrom({table: this.model.table});
+			where = makeWhere(params.where);
+			order = makeOrderBy(params.order);
+			page = makePage(params.page);
+			sql = select + from + where + order + page;  
+		}
 		db.query(sql, function(err, res, field){
 			if(err){
 				cb(err);
@@ -130,7 +205,7 @@ function makeCollections(db, models){
 	  			_.each(rel.join, function(foreign, own){
 	  				 condition[foreign] = self[own];
 	  			});
-	  			all[rel.model](condition, cb);
+	  			all[rel.model]({where: condition}, cb);
 	  		}).bind(self)
 				self[name + '_'] = self[name].dustify();
 			});
@@ -143,6 +218,7 @@ function makeCollections(db, models){
 
 		collection.create = DbObject;
 	});
+	
 	return all;
 }
 

@@ -1,5 +1,6 @@
 {>page/}
 {<main}
+{#root}
 	<div class="action">
 		<div class="sort"><a href="/Students">by institutes</a></div>
 		<div class="list">
@@ -20,5 +21,6 @@
 	</div>
 	<div class="search"></div>
 	<br>
+{/root}
 {/main}
 

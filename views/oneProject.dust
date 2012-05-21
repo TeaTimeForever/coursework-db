@@ -1,6 +1,6 @@
 {>page/}
 {<main}
-	{#project}
+	{#root}
 	<div class="info">
 
 	<table>
@@ -67,6 +67,6 @@
 		</form>
 		
 	</div>
-	{/project}
+	{/root}
 {/main}
 

@@ -1,5 +1,7 @@
 {>page/}
 {<main}
-	one student
+	{#root}	
+		{fullname}
+	{/root}
 {/main}
 

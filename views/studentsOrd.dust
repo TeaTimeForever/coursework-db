@@ -1,0 +1,11 @@
+{>page/}
+{<main}
+	<a href="lastname">lN</a>
+	<a href="firstname">fN</a>
+	{#root}
+		<a class="item" href="/Students/{personal_code}"> link</a>
+		{fullname}
+		<br>
+	{/root}
+{/main}
+

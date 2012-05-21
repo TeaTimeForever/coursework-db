@@ -1,5 +1,7 @@
 {>page/}
 {<main}
+{#root}
   one Teacher
+{/root}
 {/main}
 
