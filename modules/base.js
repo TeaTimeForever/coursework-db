@@ -3,7 +3,49 @@ var _ = require('underscore');
 _.str = require('underscore.string');
 _.mixin(_.str.exports());
 _.str.include('Underscore.string', 'string');
-
+	
+Function.prototype.dustify = function(){
+	var async = this;
+	return function(chunk, context, bodies, params){
+		console.log('chunk: ' + chunk);
+		console.log('context: ' + context);
+		console.log('bodies: ' + bodies);
+		console.log('params: ' + params);
+		return chunk.map(function(chunk){
+			async(function(err, data){
+				if(err){
+					if(bodies['error']){
+						chunk.render(bodies['error'], context.push(err));
+					} else {
+						chunk.write(err);
+					}
+				} else {
+					return chunk.section(data, context, bodies, params).end();
+				}
+				return chunk.end();
+			});
+		});
+	}
+}
+	//async - метод в который передается cb. функция изменяет async
+function dustify(async){
+	return function(chunk, context, bodies, params){
+		return chunk.map(function(chunk){
+			async(function(err, data){
+				if(err){
+					if(bodies['error']){
+						chunk.render(bodies['error'], context.push(err));
+					} else {
+						chunk.write(err);
+					}
+				} else {
+					return chunk.section(data, context, bodies, params).end();
+				}
+				return chunk.end();
+			});
+		});
+	}
+}
 //подготавливает объекты для ассинхронного использования согласно данным типа schema.js
 function makeCollections(db, models){
 	all = {};
@@ -30,19 +72,23 @@ function makeCollections(db, models){
 	}
 	function makeWhere(condition){
 		var compiled = makeCondition(condition);
+		var res;
 		if(compiled == ''){
-			return '';
+			res = '';
 		} else {
-			return " where " + compiled + " ";
+			res = " where " + compiled + " ";
 		}
+		console.log(res);
+		return res;
 	}
-	DbCollection.prototype.getMany = function(condition, cb){
+	var getMany = function(condition, cb){
 		var self = this;
 		var result = [];
 		if(typeof(condition) == 'function'){
 			cb = condition;
 			condition = '';
-		}
+		} 
+
 		var sql = 'select * from ' + this.model.table + makeWhere(condition); 
 		db.query(sql, function(err, res, field){
 			if(err){
@@ -55,31 +101,30 @@ function makeCollections(db, models){
 			}
 		});
 	}
-	//async - метод в который передается cb. функция изменяет async
-	function dustify(async){
-		return function(chunk, context, bodies, params){
-			return chunk.map(function(chunk){
-				async(function(err, data){
-					if(err){
-						if(bodies['error']){
-							chunk.render(bodies['error'], context.push(err));
-						} else {
-							chunk.write(err);
-						}
-					} else {
-						return chunk.section(data, context, bodies, params).end();
-					}
-					return chunk.end();
-				});
-			});
-		}
-	}
+	DbCollection.prototype.getMany = getMany;
+
 	_.each(models, function(model, name){
 		var collection = new DbCollection(model);
-		all[name] = (function(condition, cb){
+	
+		var getObj = (function(condition, cb){
 			collection.getMany(condition, cb);
 		}).bind(all);
-		all[name + '_'] = dustify(all[name]);
+
+		var getObj2 = function(condition, cb){
+			if((cb === undefined) && (typeof(condition)!= 'function')){
+				console.log('curred v');
+		  	var ret = function(cb){
+					console.log('!!!!!!!!');
+		  		getObj(condition, cb);
+		  	}
+				ret.hello = 'hello';
+				return ret;
+			} else {
+				getObj(condition, cb);
+			}
+		}
+		all[name] = getObj2;
+		all[name + '_'] = getObj2.dustify();
 		function DbObject(data){
 			var self = this;
 			_.each(data, function(value, key){
@@ -95,12 +140,12 @@ function makeCollections(db, models){
 	  			});
 	  			all[rel.model](condition, cb);
 	  		}).bind(self)
-				self[name + '_'] = dustify(self[name]);
+				self[name + '_'] = self[name].dustify();
 			});
 
   		_.each(model.methods, function(method, name){
   			self[name] = method.bind(self);
-  			self[name + '_'] = dustify(method);
+  			self[name + '_'] = method.dustify();
   		});
 		}
 

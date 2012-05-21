@@ -32,7 +32,7 @@ var __tame_fn_0 = function (__tame_k) {
                     var __tame_defers = new tame.Deferrals (__tame_k);
                     var __tame_fn_3 = function (__tame_k) {
                         tame.setActiveCb (__tame_defer_cb);
-                        all . institutes (
+                        all . institutes ( { id : 1 } ,
                         __tame_defers.defer ( { 
                             assign_fn : 
                                 function () {

@@ -49,7 +49,7 @@ function start(){
     };
     exports.oneInstitute = function(req, res){
 			var id = req.params.id;
-      res.render('oneInstitute', all);
+      res.render('testInst', {institute: all.institutes({id: 1}).dustify()});
     };
 		exports.createInstitute = function(req, res){
 			var inst = req.body.institute;
@@ -99,10 +99,10 @@ function start(){
 			]);
       res.render('successTeacher', all);
 		}
-
+//all.institutes_(id : 3).dustify
 // TEAMS
     exports.teams = function(req, res){
-      res.render('teams', all);
+      res.render('teams', all[teams_]);
     };
     exports.newTeam= function(req, res){
       res.render('newTeam', all);

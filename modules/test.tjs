@@ -17,7 +17,7 @@ var all = makeCollections(db, models);
 function main(autocb){
 	var err, institutes;
   await {
-  	all.institutes(defer(err, institutes));
+  	all.institutes({id: 1},defer(err, institutes));
   }
 	_.each(institutes, function(n){
 	});

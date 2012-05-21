@@ -1,5 +1,8 @@
 {>page/}
 {<main}
-	one institute
+	{#institute}
+		klsajakl
+	{/institute}
+	l;kjw
 {/main}
 
