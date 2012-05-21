@@ -45,6 +45,7 @@ app.configure('production', function(){
 routes.start();
 
 app.get('/', routes.index);
+
 app.get('/Institutes', routes.institutes);
 app.get('/Institutes/new', routes.newInstitute);
 app.get('/Institutes/:id', routes.oneInstitute);
@@ -56,11 +57,14 @@ app.get('/Projects', routes.projects);
 app.get('/Projects/new', routes.newProject);
 app.get('/Projects/:id', routes.oneProject);
 app.post('/Projects/create', routes.createProject);
+app.post('/Projects/delete/:id', routes.deleteProject);
+app.post('/Projects/edit/:id', routes.editProject);
 
 app.get('/Teams', routes.teams);
 app.get('/Teams/new', routes.newTeam);
 app.get('/Teams/:id', routes.oneTeam);
 app.post('/Teams/create', routes.createTeam);
+
 
 app.get('/Students', routes.studentsI); // by default - sort by Institutes
 app.get('/StudentsT', routes.studentsT);

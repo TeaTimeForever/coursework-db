@@ -20,6 +20,7 @@ function addMeta(obj){
 			{ src: 'http://cdnjs.cloudflare.com/ajax/libs/jquery/1.7.2/jquery.min.js' },
 			{ src: '/javascripts/edit.js'},
 			{ src: '/javascripts/oneInstitute.js'},
+			{ src: '/javascripts/oneProject.js'},
 			{ src: '/javascripts/oneObject.js'},
 			{ src: '/javascripts/create.js'}
 		],
@@ -27,6 +28,7 @@ function addMeta(obj){
 			{ src: '/stylesheets/list.css'},
 			{ src: '/stylesheets/main.css'},
 			{ src: '/stylesheets/oneInstitute.css'},
+			{ src: '/stylesheets/oneProject.css'},
 			{ src: '/stylesheets/newObject.css'},
 			{ src: '/stylesheets/oneObject.css'},
 			{ src: '/stylesheets/style.css'}
@@ -91,9 +93,11 @@ function start(){
     };
     exports.oneProject = function(req, res){
 			var id = req.params.id;
-      res.render('oneProject', all);
+      res.render('oneProject', addMeta({
+				project: all.projects({id: id}).dustify()
+			}));
     };
-		exports.createProject= function(req, res){
+		exports.createProject = function(req, res){
 			var proj = req.body.project;
 			db.query('insert into projects ' +
 			 'set name = ?, university_id = ?, start_date = ?, end_date = ?, mark = ?, description = ?', [
@@ -101,6 +105,11 @@ function start(){
 			]);
       res.render('successProject', all);
 		}
+		exports.deleteProject = function(req, res){
+			var id = req.params.id;
+			db.query('delete from projects where id = ' + id);
+      res.render('successDelProject', all);
+		};
 
 //TEACHERS
     exports.teachers = function(req, res){
