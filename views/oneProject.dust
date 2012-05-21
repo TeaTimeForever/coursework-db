@@ -1,6 +1,6 @@
 {>page/}
 {<main}
-	{#root}
+{#root}
 	<div class="info">
 
 	<table>
@@ -34,38 +34,38 @@
 			{#team_}{#members_}{#students_}{fullname}<br>{/students_}{/members_}{/team_}
 		</div>
 	</div>
-<!--
+
+		
 	<div class="edit-mode">
 		<form action="/Institutes/edit/{id}" id="edit-form" method="post">
 			<table>
 				<tr>
 					<td>Name: </td>
-					<td><input type="text" name="institute[name]" value="{name}"</td>
+					<td><input type="text" name="project[name]" value="{name}"</td>
 				</tr>
 				<tr>
-					<td>Country: </td>
-					<td><input type="text" name="institute[country]" disabled="disabled" value="{country}"</td>
+					<td>Institute: </td>
+					<td><input type="text" name="project[institute]" disabled="disabled" value="{#institute_}{name}{/institute_}"</td>
 				</tr>
 				<tr>
-					<td>Address: </td>
-					<td><input type="text" name="institute[address]" value="{address}"/></td>
+					<td>Start: </td>
+					<td><input type="text" name="project[start_date]" value="{start_date}"/></td>
 				</tr>
 				<tr>
-					<td>Postal code: </td>
-					<td><input type="text" name="institute[postal_code]" value="{postal_code}"/></td>
+					<td>End: </td>
+					<td><input type="text" name="project[end_date]" value="{end_date}"/></td>
 				</tr>
 			</table>
 			<div class="save-button">Save</div>
 			<div class="cancel-button">Cancel</div>
 		</form>
 	</div>
--->
+
 	<div class="functions">
 		<div class="edit-button">Edit</div>
 		<form action="/Projects/delete/{id}" method="post">
 			<input type="submit" name="deleteForm" value=Delete />
 		</form>
-		
 	</div>
 	{/root}
 {/main}

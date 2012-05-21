@@ -48,31 +48,4 @@ jQuery(function($){
 			prHidden = true;
 		}
 	});
-
-	$editButton.click(function(){
-		
-	});
-
-
-
-
-
-
-
-
-//	$('#main-form').submit(function(e){
-//	});
-//
-//	$saveButton.click(function(){
-//		var changed = false, it = 0;
-//		_.each(textareas, function(n){
-//			if($(n).val() != currentValues[it]){
-//				changed = true;
-//			}
-//			it++;
-//		});
-//		
-//		$('.edit-mode').css('display', 'none');
-//		$('#main-form').submit();
-//	});
 });

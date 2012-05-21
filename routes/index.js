@@ -123,6 +123,17 @@ function start(){
 			db.query('delete from projects where id = ' + id);
       res.render('successDelProject', addMeta());
 		};
+  	exports.editProject = function(req, res){
+			var id = req.params.id;
+			var proj = req.body.project;
+			db.query("update projects" +
+				"set name = '" + proj.name + "', start_date =  '" + proj.start_date + "', end_date = '" + end_date + "' " + ", mark = " + proj.mark + ", description = '" + proj.description + "' " + 
+				 "where id=" + id
+			)
+      res.render('oneProject', addMeta(
+				all.projects({where:{id: id}})
+			));
+		};
 
 //TEACHERS
     exports.teachers = function(req, res){
