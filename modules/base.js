@@ -110,7 +110,6 @@ function makeCollections(db, models){
 		  	var ret = function(cb){
 		  		getObj(condition, cb);
 		  	}
-				ret.hello = 'hello';
 				return ret;
 			} else {
 				getObj(condition, cb);
