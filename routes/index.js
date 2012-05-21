@@ -13,6 +13,13 @@ var db = mysql.createClient({
 	database: 'dossee'
 });
 
+var queries = {
+	institutesWithoutProjects: "select i.* from institutes as i " + 
+				"left join projects as p on i.id = p.university_id " +
+				"where p.id is null	"
+
+}
+
 function addMeta(root){
 	if(typeof(root) === 'function'){
 		root = root.dustify();
@@ -43,7 +50,6 @@ function addMeta(root){
 		selections: ['Institutes', 'Students', 'Projects', 'Teachers', 'Teams']	
 	}
 	return obj;
-; 
 }
 
 var all = makeCollections(db, models);
@@ -93,12 +99,10 @@ function start(){
 
 // PROJECTS
 		exports.projects = function(req, res){
-      res.render('projects', all);
+      res.render('projects', addMeta(all.projects));
     };
     exports.newProject = function(req, res){
-      res.render('newProject', addMeta(all.institutes({
-				sql: "select * from institutes where id < 3"})
-			));
+      res.render('newProject', addMeta(all.institutes({sql: queries.institutesWithoutProjects})));
     };
     exports.oneProject = function(req, res){
 			var id = req.params.id;

@@ -3,14 +3,14 @@
 	<div class="action">
 		<div class="sort"></div>
 		<div class="list">
-			{#projects_}
+			{#root}
 				<a class="item" href="/Projects/{id}">link</a>
 				<b>{name}</b>
 				{#institute_}
 					{name}
 				{/institute_}
 				<br>
-			{/projects_}
+			{/root}
 		</div>
 		<div class="new">	<a class="add-new" href="Projects/new">+ Add new Project</a></div>
 	</div>
