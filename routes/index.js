@@ -13,33 +13,33 @@ var db = mysql.createClient({
 	database: 'dossee'
 });
 
-var all = makeCollections(db, models);
-all.meta ={
-	scripts: [
-		{ src: 'http://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.3.3/underscore-min.js' },
-		{ src: 'http://cdnjs.cloudflare.com/ajax/libs/jquery/1.7.2/jquery.min.js' },
-		{ src: '/javascripts/edit.js'},
-		{ src: '/javascripts/create.js'}
-	],
-	styles: [
-		{ src: '/stylesheets/list.css'},
-		{ src: '/stylesheets/main.css'},
-		{ src: '/stylesheets/newObject.css'},
-		{ src: '/stylesheets/style.css'}
-	],
-	title: 'Main Page',
-	selections: ['Institutes', 'Students', 'Projects', 'Teachers', 'Teams']	
-} 
+function addMeta(obj){
+	obj.meta ={
+		scripts: [
+			{ src: 'http://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.3.3/underscore-min.js' },
+			{ src: 'http://cdnjs.cloudflare.com/ajax/libs/jquery/1.7.2/jquery.min.js' },
+			{ src: '/javascripts/edit.js'},
+			{ src: '/javascripts/create.js'}
+		],
+		styles: [
+			{ src: '/stylesheets/list.css'},
+			{ src: '/stylesheets/main.css'},
+			{ src: '/stylesheets/newObject.css'},
+			{ src: '/stylesheets/style.css'}
+		],
+		title: 'Main Page',
+		selections: ['Institutes', 'Students', 'Projects', 'Teachers', 'Teams']	
+	}
+	return obj; 
+}
+
+var all = addMeta(makeCollections(db, models));
 
 function start(){ 
   exports.index = function(req, res){
 			res.render('page', all);
     };
    
-//    exports.test = function(req, res){
-//      res.render('test', all);
-//		}
-
 // INSTITUTES
     exports.institutes = function(req, res){
       res.render('institutes', all);
@@ -47,9 +47,15 @@ function start(){
     exports.newInstitute = function(req, res){
       res.render('newInstitute', all);
     };
+//    exports.oneInstitute = function(req, res){
+//			var id = req.params.id;
+//      res.render('oneInstitute', );
+//    };
     exports.oneInstitute = function(req, res){
 			var id = req.params.id;
-      res.render('testInst', {institute: all.institutes({id: 1}).dustify()});
+      res.render('oneInstitute', addMeta({
+				institute: all.institutes({id: id}).dustify()
+			}));
     };
 		exports.createInstitute = function(req, res){
 			var inst = req.body.institute;
@@ -99,7 +105,7 @@ function start(){
 			]);
       res.render('successTeacher', all);
 		}
-//all.institutes_(id : 3).dustify
+
 // TEAMS
     exports.teams = function(req, res){
       res.render('teams', all[teams_]);
