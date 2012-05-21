@@ -65,13 +65,14 @@ app.get('/Teams/new', routes.newTeam);
 app.get('/Teams/:id', routes.oneTeam);
 app.post('/Teams/create', routes.createTeam);
 
-
 app.get('/Students', routes.studentsI); // by default - sort by Institutes
 app.get('/StudentsT', routes.studentsT);
 app.get('/StudentsOrd/:by', routes.studentsOrd);
 app.get('/Students/new', routes.newStudent);
 app.get('/Students/:personal_code', routes.oneStudent);
 app.post('/Students/create', routes.createStudent);
+app.post('/Students/delete/:personal_code', routes.deleteStudent);
+app.post('/Students/edit/:personal_code', routes.editStudent);
 
 app.get('/Teachers', routes.teachers);
 app.get('/Teachers/new', routes.newTeacher);

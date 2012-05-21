@@ -1,7 +1,93 @@
 {>page/}
 {<main}
 	{#root}	
-		{fullname}
+		<div class="info">
+
+	<table>
+		<tr>
+			<td>Name: </td>
+			<td>{fullname}</td>
+		</tr>
+		<tr>
+			<td>Institute: </td>
+			<td>{#institute_}{name}{/institute_}</td>
+		</tr>
+		<tr>
+			<td>Education step: </td>
+			<td>{education_step}</td>
+		</tr>
+		<tr>
+			<td>Specialty: </td>
+			<td>{specialty}</td>
+		</tr>
+		<tr>
+			<td>Email: </td>
+			<td>{email}</td>
+		</tr>
+		<tr>
+			<td>Mark: </td>
+			<td>{mark}</td>
+		</tr>
+		<tr>
+			<td>Description: </td>
+			<td>{description}</td>
+		</tr>
+	</table>
+		<div class="showProj-Team">Show Team</div>
+		<div class="proj-Team">
+			{#team_}{#members_}{#students_}{fullname}<br>{/students_}{/members_}{/team_}
+		</div>
+	</div>
+	
+	<div class="edit-mode">
+		<form action="/Students/edit/{personal_code}" id="edit-form" method="post">
+			<table>
+				<tr>
+					<td>Firstname: </td>
+					<td><input type="text" name="student[firstname]" disabled="disabled" value="{firstname}"</td>
+				</tr>
+				<tr>
+					<td>Lastname: </td>
+					<td><input type="text" name="student[lastname]" value="{lastname}"</td>
+				</tr>
+				<tr>
+					<td>Institute: </td>
+					<td><input type="text" name="student[institute]" disabled="disabled" value="{#institute_}{name}{/institute_}"</td>
+				</tr>
+				<tr>
+					<td>Education step: </td>
+					<td>
+						<select type="text" name="student[education_step]">
+							<option value="1">1</option>
+							<option value="2">2</option>
+							<option value="3">3</option>
+							<option value="4">4</option>
+						</select>
+				</tr>
+				<tr>
+					<td>Specialty: </td>
+					<td><input type="text" name="student[specialty]" value="{specialty}"/></td>
+				</tr>
+				<tr>
+					<td>Mark: </td>
+					<td><input type="text" name="student[mark]" value="{mark}"/></td>
+				</tr>
+				<tr>
+					<td>Description: </td>
+					<td><textarea id="" name="student[description]" rows="10" cols="30">{description}</textarea></td>
+				</tr>
+			</table>
+			<div class="save-button">Save</div>
+			<div class="cancel-button">Cancel</div>
+		</form>
+	</div>
+	
+	<div class="functions">
+		<div class="edit-button">Edit</div>
+		<form action="/Students/delete/{personal_code}" method="post">
+			<input type="submit" name="deleteForm" value=Delete />
+		</form>
+	</div>
 	{/root}
 {/main}
 

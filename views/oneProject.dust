@@ -34,7 +34,6 @@
 			{#team_}{#members_}{#students_}{fullname}<br>{/students_}{/members_}{/team_}
 		</div>
 	</div>
-
 		
 	<div class="edit-mode">
 		<form action="/Institutes/edit/{id}" id="edit-form" method="post">

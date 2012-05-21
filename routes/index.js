@@ -202,5 +202,21 @@ function start(){
 		exports.studentsOrd = function(req, res){
 			res.render('studentsOrd', addMeta(all.students({order: [req.params.by]})));
 		}
+		exports.deleteStudent = function(req, res){
+			var pcode = req.params.personal_code;
+			db.query("delete from students where personal_code = '" + pcode + "'");
+      res.render('successDelStudent', addMeta());
+		};
+  	exports.editStudent = function(req, res){
+			var pcode = req.params.personal_code;
+			var student = req.body.student;
+			db.query("update students " +
+				"set education_step= " + student.education_step + ", lastname=  '" + student.lastname + "', specialty = '" + student.specialty + "' " + ", mark = " + student.mark + ", email = '" + student.email + "' , description = '" + student.description + "' " + 
+				 "where personal_code = '" + pcode + "' "
+			);
+      res.render('oneStudent', addMeta(
+				all.students({where:{personal_code: pcode}})
+			));
+		};
 }
 exports.start = start;

@@ -28,7 +28,7 @@
 				<tr>
 					<td>Education step:</td>
 					<td>
-						<select type="text" name="student[institute_id]">
+						<select type="text" name="student[education_step]">
 							<option value="1">1</option>
 							<option value="2">2</option>
 							<option value="3">3</option>
