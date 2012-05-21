@@ -1,6 +1,7 @@
 {>page/}
 {<main}
 	{#institute}
+	<div class="info">
 		Name: {name} <br>
 		Address: {address} <br>
 		Postal code: {postal_code}
@@ -22,6 +23,15 @@
 				{name} <br>
 			{/projects_}
 		</div>
+	</div>
+	<div class="function">
+		<div class="edit-button">Edit</div>
+
+		<form action="/Institutes/delete/{id}" method="post">
+			<input type="submit" name="form" value=Delete />
+		</form>
+		
+	</div>
 	{/institute}
 {/main}
 

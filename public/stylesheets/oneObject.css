@@ -1,0 +1,10 @@
+.info, .function{
+	float: left;
+	width: 50%;
+}
+.info{
+	background-color: red;
+}
+.function{
+	background-color: green;
+}

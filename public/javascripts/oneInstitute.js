@@ -6,6 +6,7 @@ jQuery(function($){
 		, $students = $('.inst-Students')
 		, $showPr = $('.showInst-Project')
 		, $project = $('.inst-Project')
+		, $deleteButton = $('.delete-button')
 	;
 	var tcHidden = true;
 	$showTc.click(function(){
@@ -45,16 +46,6 @@ jQuery(function($){
 			prHidden = true;
 		}
 	});
-
-
-
-
-
-
-
-
-
-
 
 
 //	$('#main-form').submit(function(e){

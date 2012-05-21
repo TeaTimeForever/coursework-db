@@ -1,0 +1,6 @@
+{>page/}
+{<main}
+	institute successfully deleted<br>
+	<a href="/Institutes">return</a> to institutes
+{/main}
+

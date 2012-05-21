@@ -27,6 +27,7 @@ function addMeta(obj){
 			{ src: '/stylesheets/main.css'},
 			{ src: '/stylesheets/oneInstitute.css'},
 			{ src: '/stylesheets/newObject.css'},
+			{ src: '/stylesheets/oneObject.css'},
 			{ src: '/stylesheets/style.css'}
 		],
 		title: 'Main Page',
@@ -63,7 +64,12 @@ function start(){
 				inst.name, inst.country, inst.address, inst.postal_code
 			]);
       res.render('successInstitute', all);
-		}
+		};
+		exports.deleteInstitute = function(req, res){
+			var id = req.params.id;
+			db.query('delete from institutes where id = ' + id);
+      res.render('successDelInstitute', all);
+		};
     
 // PROJECTS
 		exports.projects = function(req, res){
