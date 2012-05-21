@@ -1,10 +1,13 @@
-.info, .function{
+.info, .functions, .edit-mode{
 	float: left;
-	width: 50%;
+	width: 400px;
 }
 .info{
 	background-color: red;
 }
-.function{
+.functions{
 	background-color: green;
+}
+.edit-mode{
+	display: none;
 }

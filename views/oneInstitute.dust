@@ -2,9 +2,25 @@
 {<main}
 	{#institute}
 	<div class="info">
-		Name: {name} <br>
-		Address: {address} <br>
-		Postal code: {postal_code}
+
+	<table>
+		<tr>
+			<td>Name: </td>
+			<td>{name}</td>
+		</tr>
+		<tr>
+			<td>Country: </td>
+			<td>{country}</td>
+		</tr>
+		<tr>
+			<td>Address: </td>
+			<td>{address}</td>
+		</tr>
+		<tr>
+			<td>Postal code: </td>
+			<td>{postal_code}</td>
+		</tr>
+	</table>
 		<div class="showInst-Teachers">Show Teachers</div>
 		<div class="inst-Teachers">
 			{#teachers_}
@@ -24,11 +40,36 @@
 			{/projects_}
 		</div>
 	</div>
-	<div class="function">
-		<div class="edit-button">Edit</div>
 
+	<div class="edit-mode">
+		<form action="/Institutes/edit/{id}" id="edit-form" method="post">
+			<table>
+				<tr>
+					<td>Name: </td>
+					<td><input type="text" name="institute[name]" value="{name}"</td>
+				</tr>
+				<tr>
+					<td>Country: </td>
+					<td><input type="text" name="institute[country]" disabled="disabled" value="{country}"</td>
+				</tr>
+				<tr>
+					<td>Address: </td>
+					<td><input type="text" name="institute[address]" value="{address}"/></td>
+				</tr>
+				<tr>
+					<td>Postal code: </td>
+					<td><input type="text" name="institute[postal_code]" value="{postal_code}"/></td>
+				</tr>
+			</table>
+			<div class="save-button">Save</div>
+			<div class="cancel-button">Cancel</div>
+		</form>
+	</div>
+
+	<div class="functions">
+		<div class="edit-button">Edit</div>
 		<form action="/Institutes/delete/{id}" method="post">
-			<input type="submit" name="form" value=Delete />
+			<input type="submit" name="deleteForm" value=Delete />
 		</form>
 		
 	</div>

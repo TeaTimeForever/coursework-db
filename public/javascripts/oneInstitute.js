@@ -7,6 +7,8 @@ jQuery(function($){
 		, $showPr = $('.showInst-Project')
 		, $project = $('.inst-Project')
 		, $deleteButton = $('.delete-button')
+		, $editButton = $('.edit-button')
+
 	;
 	var tcHidden = true;
 	$showTc.click(function(){
@@ -46,6 +48,16 @@ jQuery(function($){
 			prHidden = true;
 		}
 	});
+
+	$editButton.click(function(){
+		
+	});
+
+
+
+
+
+
 
 
 //	$('#main-form').submit(function(e){

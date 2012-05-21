@@ -49,6 +49,7 @@ app.get('/Institutes', routes.institutes);
 app.get('/Institutes/new', routes.newInstitute);
 app.get('/Institutes/:id', routes.oneInstitute);
 app.post('/Institutes/delete/:id', routes.deleteInstitute);
+app.post('/Institutes/edit/:id', routes.editInstitute);
 app.post('/Institutes/create', routes.createInstitute);
 
 app.get('/Projects', routes.projects);

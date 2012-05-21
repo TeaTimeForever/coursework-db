@@ -20,6 +20,7 @@ function addMeta(obj){
 			{ src: 'http://cdnjs.cloudflare.com/ajax/libs/jquery/1.7.2/jquery.min.js' },
 			{ src: '/javascripts/edit.js'},
 			{ src: '/javascripts/oneInstitute.js'},
+			{ src: '/javascripts/oneObject.js'},
 			{ src: '/javascripts/create.js'}
 		],
 		styles: [
@@ -52,7 +53,6 @@ function start(){
     };
     exports.oneInstitute = function(req, res){
 			var id = req.params.id;
-			console.log(all.institutes({id: id}));
       res.render('oneInstitute', addMeta({
 				institute: all.institutes({id: id}).dustify()
 			}));
@@ -70,7 +70,18 @@ function start(){
 			db.query('delete from institutes where id = ' + id);
       res.render('successDelInstitute', all);
 		};
-    
+  	exports.editInstitute = function(req, res){
+			var id = req.params.id;
+			var inst = req.body.institute;
+			db.query("update institutes " +
+				"set name = '" + inst.name + "', address =  '" + inst.address + "', postal_code = '" + inst.postal_code + "' " +
+				 "where id=" + id
+			)
+      res.render('oneInstitute', addMeta({
+				institute: all.institutes({id: id}).dustify()
+			}));
+		};
+
 // PROJECTS
 		exports.projects = function(req, res){
       res.render('projects', all);
