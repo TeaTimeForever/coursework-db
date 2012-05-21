@@ -7,10 +7,6 @@ _.str.include('Underscore.string', 'string');
 Function.prototype.dustify = function(){
 	var async = this;
 	return function(chunk, context, bodies, params){
-		console.log('chunk: ' + chunk);
-		console.log('context: ' + context);
-		console.log('bodies: ' + bodies);
-		console.log('params: ' + params);
 		return chunk.map(function(chunk){
 			async(function(err, data){
 				if(err){
@@ -78,7 +74,6 @@ function makeCollections(db, models){
 		} else {
 			res = " where " + compiled + " ";
 		}
-		console.log(res);
 		return res;
 	}
 	var getMany = function(condition, cb){
@@ -112,9 +107,7 @@ function makeCollections(db, models){
 
 		var getObj2 = function(condition, cb){
 			if((cb === undefined) && (typeof(condition)!= 'function')){
-				console.log('curred v');
 		  	var ret = function(cb){
-					console.log('!!!!!!!!');
 		  		getObj(condition, cb);
 		  	}
 				ret.hello = 'hello';
