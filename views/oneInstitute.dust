@@ -1,8 +1,27 @@
 {>page/}
 {<main}
 	{#institute}
-		klsajakl
+		Name: {name} <br>
+		Address: {address} <br>
+		Postal code: {postal_code}
+		<div class="showInst-Teachers">Show Teachers</div>
+		<div class="inst-Teachers">
+			{#teachers_}
+				{fullname} <br>
+			{/teachers_}
+		</div>
+		<div class="showInst-Students">Show Students</div>
+		<div class="inst-Students">
+			{#students_}
+				{fullname} <br>
+			{/students_}
+		</div>
+		<div class="showInst-Project">Show Project</div>
+		<div class="inst-Project">
+			{#projects_}
+				{name} <br>
+			{/projects_}
+		</div>
 	{/institute}
-	l;kjw
 {/main}
 

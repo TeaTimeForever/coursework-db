@@ -19,11 +19,13 @@ function addMeta(obj){
 			{ src: 'http://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.3.3/underscore-min.js' },
 			{ src: 'http://cdnjs.cloudflare.com/ajax/libs/jquery/1.7.2/jquery.min.js' },
 			{ src: '/javascripts/edit.js'},
+			{ src: '/javascripts/oneInstitute.js'},
 			{ src: '/javascripts/create.js'}
 		],
 		styles: [
 			{ src: '/stylesheets/list.css'},
 			{ src: '/stylesheets/main.css'},
+			{ src: '/stylesheets/oneInstitute.css'},
 			{ src: '/stylesheets/newObject.css'},
 			{ src: '/stylesheets/style.css'}
 		],
@@ -47,12 +49,9 @@ function start(){
     exports.newInstitute = function(req, res){
       res.render('newInstitute', all);
     };
-//    exports.oneInstitute = function(req, res){
-//			var id = req.params.id;
-//      res.render('oneInstitute', );
-//    };
     exports.oneInstitute = function(req, res){
 			var id = req.params.id;
+			console.log(all.institutes({id: id}));
       res.render('oneInstitute', addMeta({
 				institute: all.institutes({id: id}).dustify()
 			}));
