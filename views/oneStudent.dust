@@ -9,6 +9,10 @@
 			<td>{fullname}</td>
 		</tr>
 		<tr>
+			<td>Personal code: </td>
+			<td>{personal_code}</td>
+		</tr>
+		<tr>
 			<td>Institute: </td>
 			<td>{#institute_}{name}{/institute_}</td>
 		</tr>
@@ -33,9 +37,9 @@
 			<td>{description}</td>
 		</tr>
 	</table>
-		<div class="showProj-Team">Show Team</div>
-		<div class="proj-Team">
-			{#team_}{#members_}{#students_}{fullname}<br>{/students_}{/members_}{/team_}
+		<div class="showTeam-Stud">Show Team</div>
+		<div class="stud-Team">
+			{#membership_}{#team_}{name}{/team_}{/membership_}
 		</div>
 	</div>
 	
@@ -49,6 +53,10 @@
 				<tr>
 					<td>Lastname: </td>
 					<td><input type="text" name="student[lastname]" value="{lastname}"</td>
+				</tr>
+				<tr>
+					<td>Personal Code: </td>
+					<td><input type="text" name="student[personal_code]" disabled="disabled" value="{personal_code}"</td>
 				</tr>
 				<tr>
 					<td>Institute: </td>
