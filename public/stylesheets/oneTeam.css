@@ -1,0 +1,6 @@
+.team-Stud{
+	display: none;
+}
+#currentMembers, #add-rem-buttons, #avaliableMembers{
+	float: left;
+}

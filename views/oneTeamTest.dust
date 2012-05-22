@@ -1,0 +1,7 @@
+{>page/}
+{<main}
+{#root}
+1: {#info}{.}{/info}
+2: {#sql}{.}{/sql}
+{/root}
+{/main}

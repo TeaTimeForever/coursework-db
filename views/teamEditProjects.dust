@@ -1,0 +1,8 @@
+{>oneTeam/}
+{<teamEdit-projects}
+lallala
+	<tr>
+		<td>Project: </td>
+		<td><input type="text" name="team[project]" value="{#project_}{name}{/project_}"</td>
+	</tr>
+{/teamEdit-projects}

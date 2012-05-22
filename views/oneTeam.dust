@@ -1,5 +1,79 @@
 {>page/}
 {<main}
-  one Team
+{#root}
+	{#info}
+		<div class="info">
+	
+		<table>
+			<tr>
+				<td>Name: </td>
+				<td>{name}</td>
+			</tr>
+			<tr>
+				<td>Project: </td>
+				<td>{#project_}{name}{/project_}</td>
+			</tr>
+		</table>
+			<div class="showMemb-Team">Show Team Members</div>
+			<div class="team-Stud">
+				{#members_}{#students_}{fullname} <br>{/students_}{/members_}
+			</div>
+		</div>
+		
+		<div class="edit-mode">
+			<form action="/Teams/edit/{id}" id="edit-form" method="post">
+				<table>
+					<tr>
+						<td>Name: </td>
+						<td><input type="text" name="team[name]" value="{name}"</td>
+					</tr>
+					<tr>
+						<td>Project: </td>
+						<td>
+							<select type="text" name="team[project_id]">
+		{#project_}<option value="{id}">{name}</option>{/project_}
+	{/info}
+	{#freeProjects}
+								<option value="{id}">{name}</option>
+	{/freeProjects}
+	{#info}
+							</select>
+						<td>
+					</tr>
+					<tr>
+				    <td colspan="2">
+    		      <select id="currentMembers" multiple="multiple" name="members[]" Height="111px" >
+
+							{#members_}{#students_}
+				        <option value="{personal_code}" selected="selected" >{fullname}</option>
+							{/students_}{/members_}
+				      </select>
+						  <div id="add-rem-buttons">
+				        <div id='remove-member'>rem</div>
+				        <div id='add-member'>add</div>
+						  </div>
+				    	<select id="avaliableMembers" runat="server" Height="111px" multiple="multiple">
+	{/info}
+	{#freeStudents}
+								<option value="{personal_code}">{fullname}</option>
+	{/freeStudents}
+	{#info}
+				      </select>
+				    </td>
+				  </tr>                  
+				</table>
+				<div class="save-button">Save</div>
+				<div class="cancel-button">Cancel</div>
+			</form>
+		</div>
+	
+		<div class="functions">
+			<div class="edit-button">Edit</div>
+			<form action="/Teams/delete/{id}" method="post">
+				<input type="submit" name="deleteForm" value=Delete />
+			</form>
+		</div>
+	{/info}
+	{/root}
 {/main}
 

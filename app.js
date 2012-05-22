@@ -64,6 +64,8 @@ app.get('/Teams', routes.teams);
 app.get('/Teams/new', routes.newTeam);
 app.get('/Teams/:id', routes.oneTeam);
 app.post('/Teams/create', routes.createTeam);
+app.post('/Teams/delete/:id', routes.deleteTeam);
+app.post('/Teams/edit/:id', routes.editTeam);
 
 app.get('/Students', routes.studentsI); // by default - sort by Institutes
 app.get('/StudentsT', routes.studentsT);

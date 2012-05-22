@@ -16,8 +16,13 @@ var db = mysql.createClient({
 var queries = {
 	institutesWithoutProjects: "select i.* from institutes as i " + 
 				"left join projects as p on i.id = p.university_id " +
-				"where p.id is null	"
-
+				"where p.id is null	",
+	projectsWithoutTeam: "select p.* from projects as p " +
+  			"left join teams as t on p.id = t.project_id " +
+    		"where t.id is null",
+	studentsWithoutTeam: "select s.* from students as s " +
+			  "left join team_members as tm on tm.personal_code = s.personal_code " +
+				"where tm.team_id is null"
 }
 
 function addMeta(root){
@@ -35,6 +40,7 @@ function addMeta(root){
 			{ src: '/javascripts/oneInstitute.js'},
 			{ src: '/javascripts/oneProject.js'},
 			{ src: '/javascripts/oneStudent.js'},
+			{ src: '/javascripts/oneTeam.js'},
 			{ src: '/javascripts/oneObject.js'},
 			{ src: '/javascripts/create.js'}
 		],
@@ -43,6 +49,7 @@ function addMeta(root){
 			{ src: '/stylesheets/main.css'},
 			{ src: '/stylesheets/oneInstitute.css'},
 			{ src: '/stylesheets/oneProject.css'},
+			{ src: '/stylesheets/oneTeam.css'},
 			{ src: '/stylesheets/oneStudent.css'},
 			{ src: '/stylesheets/newObject.css'},
 			{ src: '/stylesheets/oneObject.css'},
@@ -137,6 +144,57 @@ function start(){
 			));
 		};
 
+// TEAMS
+    exports.teams = function(req, res){
+      res.render('teams', addMeta(all.teams));
+    };
+    exports.newTeam= function(req, res){
+      res.render('newTeam', addMeta(all));
+    };
+    exports.oneTeam= function(req, res){
+			var id = req.params.id;
+      res.render('oneTeam', addMeta({
+				info: all.teams({where: {id: id}}).dustify(),
+				freeProjects: all.projects({sql: queries.projectsWithoutTeam}).dustify(),
+				freeStudents: all.students({sql: queries.studentsWithoutTeam}).dustify()
+			}));
+    };
+		exports.createTeam = function(req, res){
+			var team = req.body.team;
+			db.query('insert into teams ' +
+			 'set name = ?, project_id = ?', [
+				team.name, team.project_id
+			]);
+      res.render('successTeam', addMeta(all));
+		};
+  	exports.editTeam= function(req, res){
+			var id = req.params.id;
+			var team = req.body.team;
+			var memb = req.body.members;
+			db.query("delete from team_members where team_id = "+ id);
+			_.each(memb, function(pcode){
+				db.query('insert into team_members ' +
+					'set team_id = ?, personal_code = ?, is_leader = ? ', [
+						id, pcode, 0
+					]
+				);
+			});
+			db.query("update teams " +
+				"set name  = '" + team.name + "', project_id = " + team.project_id  + 
+				" where id = " + id
+			);
+      res.render('oneTeam', addMeta({
+				info: all.teams({where: {id: id}}).dustify(),
+				freeProjects: all.projects({sql: queries.projectsWithoutTeam}).dustify(),
+				freeStudents: all.students({sql: queries.studentsWithoutTeam}).dustify()
+			}));
+		};
+		exports.deleteTeam = function(req, res){
+			var id = req.params.id;
+			db.query('delete from teams where id = ' + id);
+      res.render('successDelTeam', addMeta());
+		};
+
 //TEACHERS
     exports.teachers = function(req, res){
       res.render('teachers', addMeta(all));
@@ -171,26 +229,6 @@ function start(){
       res.render('oneTeacher', addMeta(
 				all.teachers({where:{personal_code: pcode}})
 			));
-		};
-
-// TEAMS
-    exports.teams = function(req, res){
-      res.render('teams', addMeta(all.teams));
-    };
-    exports.newTeam= function(req, res){
-      res.render('newTeam', addMeta(all));
-    };
-    exports.oneTeam= function(req, res){
-			var id = req.params.id;
-      res.render('oneTeam', addMeta(all.teams({where: {id: id}})));
-    };
-		exports.createTeam = function(req, res){
-			var team = req.body.team;
-			db.query('insert into teams ' +
-			 'set name = ?, project_id = ?', [
-				team.name, team.project_id
-			]);
-      res.render('successTeam', addMeta(all));
 		};
 
 // STUDENTS

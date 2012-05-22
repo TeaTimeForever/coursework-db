@@ -1,0 +1,6 @@
+{>page/}
+{<main}
+	team successfully deleted<br>
+	<a href="/Teams">return</a> to teams
+{/main}
+
