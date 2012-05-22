@@ -78,6 +78,8 @@ app.get('/Teachers', routes.teachers);
 app.get('/Teachers/new', routes.newTeacher);
 app.get('/Teachers/:personal_code', routes.oneTeacher);
 app.post('/Teachers/create', routes.createTeacher);
+app.post('/Teachers/delete/:personal_code', routes.deleteTeacher);
+app.post('/Teachers/edit/:personal_code', routes.editTeacher);
 
 app.get('/test', routes.test);
 app.listen(3001, function(){

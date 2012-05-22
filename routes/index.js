@@ -34,6 +34,7 @@ function addMeta(root){
 			{ src: '/javascripts/edit.js'},
 			{ src: '/javascripts/oneInstitute.js'},
 			{ src: '/javascripts/oneProject.js'},
+			{ src: '/javascripts/oneStudent.js'},
 			{ src: '/javascripts/oneObject.js'},
 			{ src: '/javascripts/create.js'}
 		],
@@ -42,6 +43,7 @@ function addMeta(root){
 			{ src: '/stylesheets/main.css'},
 			{ src: '/stylesheets/oneInstitute.css'},
 			{ src: '/stylesheets/oneProject.css'},
+			{ src: '/stylesheets/oneStudent.css'},
 			{ src: '/stylesheets/newObject.css'},
 			{ src: '/stylesheets/oneObject.css'},
 			{ src: '/stylesheets/style.css'}
@@ -137,7 +139,7 @@ function start(){
 
 //TEACHERS
     exports.teachers = function(req, res){
-      res.render('teachers', addMeta(all.teachers));
+      res.render('teachers', addMeta(all));
     };
     exports.newTeacher = function(req, res){
       res.render('newTeacher', addMeta(all));
@@ -153,7 +155,23 @@ function start(){
 				tc.firstname, tc.lastname, tc.institute_id, tc.specialty, tc.email, tc.personal_code
 			]);
       res.render('successTeacher', addMeta(all));
-		}
+		};
+		exports.deleteTeacher = function(req, res){
+			var pcode = req.params.personal_code;
+			db.query("delete from teachers where personal_code = '" + pcode + "'");
+      res.render('successDelTeacher', addMeta());
+		};
+  	exports.editTeacher = function(req, res){
+			var pcode = req.params.personal_code;
+			var teach = req.body.teacher;
+			db.query("update teachers " +
+				"set Lastname=  '" + teach.lastname + "', specialty = '" + teach.specialty + "' , email = '" + teach.email + "' " +
+				 "where personal_code = '" + pcode + "' "
+			);
+      res.render('oneTeacher', addMeta(
+				all.teachers({where:{personal_code: pcode}})
+			));
+		};
 
 // TEAMS
     exports.teams = function(req, res){
@@ -173,7 +191,7 @@ function start(){
 				team.name, team.project_id
 			]);
       res.render('successTeam', addMeta(all));
-		}
+		};
 
 // STUDENTS
     exports.studentsI = function(req, res){

@@ -1,0 +1,6 @@
+{>page/}
+{<main}
+	teacher successfully deleted<br>
+	<a href="/Teachers">return</a> to teachers
+{/main}
+

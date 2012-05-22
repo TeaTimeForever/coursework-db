@@ -1,7 +1,71 @@
 {>page/}
 {<main}
-{#root}
-  one Teacher
-{/root}
+	{#root}
+	<div class="info">
+		<table>
+			<tr>
+				<td>Name: </td>
+				<td>{fullname}</td>
+			</tr>
+			<tr>
+				<td>Personal code: </td>
+				<td>{personal_code}</td>
+			</tr>
+			<tr>
+				<td>Institute: </td>
+				<td>{#institute_}{name}{/institute_}</td>
+			</tr>
+			<tr>
+				<td>Specialty: </td>
+				<td>{specialty}</td>
+			</tr>
+			<tr>
+				<td>Email: </td>
+				<td>{email}</td>
+			</tr>
+		</table>
+	</div>
+	
+	<div class="edit-mode">
+		<form action="/Teachers/edit/{personal_code}" id="edit-form" method="post">
+			<table>
+				<tr>
+					<td>Firstname: </td>
+					<td><input type="text" name="teacher[firstname]" disabled="disabled" value="{Firstname}"</td>
+				</tr>
+				<tr>
+					<td>Lastname: </td>
+					<td><input type="text" name="teacher[lastname]" value="{Lastname}"</td>
+				</tr>
+				<tr>
+					<td>Personal Code: </td>
+					<td><input type="text" name="teacher[personal_code]" disabled="disabled" value="{personal_code}"</td>
+				</tr>
+				<tr>
+					<td>Institute: </td>
+					<td><input type="text" name="teacher[institute]" disabled="disabled" value="{#institute_}{name}{/institute_}"</td>
+				</tr>
+				<tr>
+					<td>Specialty: </td>
+					<td><input type="text" name="teacher[specialty]" value="{specialty}"/></td>
+				</tr>
+				<tr>
+					<td>Email: </td>
+					<td><input type="text" name="teacher[email]" value="{email}"/></td>
+				</tr>
+			</table>
+			<div class="save-button">Save</div>
+			<div class="cancel-button">Cancel</div>
+		</form>
+	</div>
+	
+	<div class="functions">
+		<div class="edit-button">Edit</div>
+		<form action="/Teachers/delete/{personal_code}" method="post">
+			<input type="submit" name="deleteForm" value=Delete />
+		</form>
+	</div>
+
+	{/root}
 {/main}
 
