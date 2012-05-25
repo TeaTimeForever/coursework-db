@@ -4,19 +4,19 @@
 		<form id="create-form" action="/Institutes/create" method="post">
 			<table>
 				<tr>
-					<td>Name:</td>
+					<td class="info-field">Name:</td>
 					<td><input type="text" name="institute[name]" /></td>
 				</tr>
 				<tr>
-					<td>Country:</td>
+					<td class="info-field">Country:</td>
 					<td><input type="text" name="institute[country]" /></td>
 				</tr>
 				<tr>
-					<td>Address:</td>
+					<td class="info-field">Address:</td>
 					<td><input type="text" name="institute[address]" /></td>
 				</tr>
 				<tr>
-					<td>Postal Code:</td>
+					<td class="info-field">Postal Code:</td>
 					<td><input type="text" name="institute[postal_code]" /></td>
 				</tr>
 			</table>

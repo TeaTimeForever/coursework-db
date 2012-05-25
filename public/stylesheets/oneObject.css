@@ -11,7 +11,7 @@
 .edit-mode{
 	display: none;
 }
-.showMoreButton{
+.showMoreButton, .save-button, .cancel-button, .create-button{
 	width: 150px;
 	background-color: #a60800;
 	color: #f0ecda;
@@ -21,7 +21,7 @@
 	text-align: center;
 	border-radius: 5px;
 }
-.showMoreButton:hover{
+.showMoreButton:hover, .save-button:hover, .cancel-button:hover, .create-button:hover{
 	cursor: pointer;
 	background-color: #bf3030;
 }
