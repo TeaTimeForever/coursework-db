@@ -20,8 +20,21 @@ body{
 	color: #07687f;
 	margin-bottom: 7px;
 }
-.goHome {
+.goHome{
 	margin: 0 350px;
+	width: 150px;
+	background-color: #a60800;
+	color: #f0ecda;
+	font-size: 14pt;
+	margin-top: 50px;
+	padding: 5px;
+	text-align: center;
+	border-radius: 5px;
+	text-decoration: none;
+}
+.goHome:hover{
+	cursor: pointer;
+	background-color: #bf3030;
 }
 .action, .functional{
 	width: 50%;
@@ -49,3 +62,4 @@ body{
 	font-size: 14pt;
 	color: #07687f;
 }
+

@@ -23,7 +23,7 @@
 		{/main}
 		<br>
 		<div class="footer">
-			{+footer} 
+			{+footer}
 				<a href="/" class="goHome">Go to home</a>
 			{/footer}
 		</div>
