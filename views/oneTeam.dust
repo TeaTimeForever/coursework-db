@@ -6,15 +6,15 @@
 	
 		<table>
 			<tr>
-				<td>Name: </td>
+				<td class="info-field">Name: </td>
 				<td>{name}</td>
 			</tr>
 			<tr>
-				<td>Project: </td>
+				<td class="info-field">Project: </td>
 				<td>{#project_}{name}{/project_}</td>
 			</tr>
 		</table>
-			<div class="showMemb-Team">Show Team Members</div>
+			<div class="showMemb-Team showMoreButton">Show Team Members</div>
 			<div class="team-Stud">
 				{#members_}{#students_}{fullname} <br>{/students_}{/members_}
 			</div>
@@ -24,11 +24,11 @@
 			<form action="/Teams/edit/{id}" id="edit-form" method="post">
 				<table>
 					<tr>
-						<td>Name: </td>
+						<td class="info-field">Name: </td>
 						<td><input type="text" name="team[name]" value="{name}"</td>
 					</tr>
 					<tr>
-						<td>Project: </td>
+						<td class="info-field">Project: </td>
 						<td>
 							<select type="text" name="team[project_id]">
 		{#project_}<option value="{id}">{name}</option>{/project_}
@@ -42,15 +42,15 @@
 					</tr>
 					<tr>
 				    <td colspan="2">
-    		      <select id="currentMembers" multiple="multiple" name="members[]" Height="111px" >
+    		      <select id="currentMembers" multiple="multiple" name="members[]" width="150px" height="200px" >
 
 							{#members_}{#students_}
 				        <option value="{personal_code}" selected="selected" >{fullname}</option>
 							{/students_}{/members_}
 				      </select>
 						  <div id="add-rem-buttons">
-				        <div id='remove-member'>rem</div>
-				        <div id='add-member'>add</div>
+				        <div class='add-rem-button'>>></div>
+				        <div class='add-rem-button'><<</div>
 						  </div>
 				    	<select id="avaliableMembers" runat="server" Height="111px" multiple="multiple">
 	{/info}
@@ -70,7 +70,7 @@
 		<div class="functions">
 			<div class="edit-button">Edit</div>
 			<form action="/Teams/delete/{id}" method="post">
-				<input type="submit" name="deleteForm" value=Delete />
+				<div class="delete-button">Delete</div>
 			</form>
 		</div>
 	{/info}

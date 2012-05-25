@@ -5,31 +5,31 @@
 
 	<table>
 		<tr>
-			<td>Name: </td>
+			<td class="info-field">Name: </td>
 			<td>{name}</td>
 		</tr>
 		<tr>
-			<td>Institute: </td>
+			<td class="info-field">Institute: </td>
 			<td>{#institute_}{name}{/institute_}</td>
 		</tr>
 		<tr>
-			<td>Start: </td>
+			<td class="info-field">Start: </td>
 			<td>{start_date}</td>
 		</tr>
 		<tr>
-			<td>End: </td>
+			<td class="info-field">End: </td>
 			<td>{end_date}</td>
 		</tr>
 		<tr>
-			<td>Mark: </td>
+			<td class="info-field">Mark: </td>
 			<td>{mark}</td>
 		</tr>
 		<tr>
-			<td>Description: </td>
+			<td class="info-field">Description: </td>
 			<td>{description}</td>
 		</tr>
 	</table>
-		<div class="showProj-Team">Show Team</div>
+		<div class="showProj-Team showMoreButton">Show Team</div>
 		<div class="proj-Team">
 			{#team_}{#members_}{#students_}{fullname}<br>{/students_}{/members_}{/team_}
 		</div>
@@ -63,7 +63,7 @@
 	<div class="functions">
 		<div class="edit-button">Edit</div>
 		<form action="/Projects/delete/{id}" method="post">
-			<input type="submit" name="deleteForm" value=Delete />
+			<div class="delete-button">Delete</div>
 		</form>
 	</div>
 	{/root}

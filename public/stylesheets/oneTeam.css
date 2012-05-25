@@ -4,3 +4,12 @@
 #currentMembers, #add-rem-buttons, #avaliableMembers{
 	float: left;
 }
+
+.add-rem-button{
+  background-color: #ffad00;
+	width: 50px;
+	border-radius: 5px;
+	text-align: center;
+	margin-top: 10px;	
+}
+
