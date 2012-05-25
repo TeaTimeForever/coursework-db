@@ -31,6 +31,7 @@ app.configure(function(){
   app.use(express.methodOverride());
   app.use(app.router);
   app.use(express.static(__dirname + '/public'));
+	app.use("/public/images", express.static(__dirname + "/public/images/"));
 });
 
 app.configure('development', function(){
@@ -40,7 +41,6 @@ app.configure('development', function(){
 app.configure('production', function(){
   app.use(express.errorHandler());
 });
-
 // Routesnpm ERR! Couldn't read dependencies.
 routes.start();
 

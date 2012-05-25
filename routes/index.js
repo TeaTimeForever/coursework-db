@@ -45,11 +45,11 @@ function addMeta(root){
 			{ src: '/javascripts/create.js'}
 		],
 		styles: [
-			{ src: '/stylesheets/list.css'},
 			{ src: '/stylesheets/main.css'},
 			{ src: '/stylesheets/oneInstitute.css'},
 			{ src: '/stylesheets/oneProject.css'},
 			{ src: '/stylesheets/oneTeam.css'},
+			{ src: '/stylesheets/oneTeacher.css'},
 			{ src: '/stylesheets/oneStudent.css'},
 			{ src: '/stylesheets/newObject.css'},
 			{ src: '/stylesheets/oneObject.css'},

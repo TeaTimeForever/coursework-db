@@ -3,6 +3,7 @@ jQuery(function(){
 		, $edit = $('.edit-mode')
 		, $saveButton = $('.save-button')
 		, $editButton = $('.edit-button')
+		, $deleteButton = $('.delete-button')
 		, $cancelButton = $('.cancel-button')
 	;
 	
@@ -18,5 +19,11 @@ jQuery(function(){
 		$('#edit-form').submit();
 		$edit.css('display', 'none');
 		$info.css('display', 'block');
+	});
+	$deleteButton.click(function(){
+		var answer = confirm ("Are you sure you want to delete this Institute?");
+		if (answer){
+			$('#delete-form').submit();
+		}
 	});
 });

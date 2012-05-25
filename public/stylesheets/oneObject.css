@@ -3,11 +3,42 @@
 	width: 400px;
 }
 .info{
-	background-color: red;
+	/*background-color: red;*/
 }
 .functions{
-	background-color: green;
+	/*background-color: green;*/
 }
 .edit-mode{
 	display: none;
+}
+.showMoreButton{
+	width: 150px;
+	background-color: #a60800;
+	color: #f0ecda;
+	font-size: 14pt;
+	margin-top: 10px;
+	padding: 5px;
+	text-align: center;
+	border-radius: 5px;
+}
+.showMoreButton:hover{
+	cursor: pointer;
+	background-color: #bf3030;
+}
+.edit-button, .delete-button{
+	width: 150px;
+	background-color: #07687f;
+	text-align: center;
+	color: #f0ecda;
+	font-size: 14pt;
+	margin-top: 10px;
+	padding: 5px;
+	border-radius: 5px;
+}
+.edit-button:hover, .delete-button:hover{
+	cursor: pointer;
+	background-color: #1c525f;
+}
+.info-field{
+	color: #a60800;
 }

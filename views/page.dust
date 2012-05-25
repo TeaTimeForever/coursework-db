@@ -14,9 +14,11 @@
 <body>
 	<div class="main">
 		{+main}
+		<div class="title">Select category</div>
 			{#selections}
-				<a class="selections" href="/{.}">{.}</a>
-				<br>
+				<div class=one-item>
+				  <a class="item-link" href="/{.}">{.}</a>
+				</div>
 			{/selections}
 		{/main}
 		<br>

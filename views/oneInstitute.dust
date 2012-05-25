@@ -1,42 +1,49 @@
 {>page/}
 {<main}
 	{#root}
+	<div class="title">Institute - {name}</div>
 	<div class="info">
 
 	<table>
 		<tr>
-			<td>Name: </td>
+			<td class="info-field">Name: </td>
 			<td>{name}</td>
 		</tr>
 		<tr>
-			<td>Country: </td>
+			<td class="info-field">Country: </td>
 			<td>{country}</td>
 		</tr>
 		<tr>
-			<td>Address: </td>
+			<td class="info-field">Address: </td>
 			<td>{address}</td>
 		</tr>
 		<tr>
-			<td>Postal code: </td>
+			<td class="info-field">Postal code: </td>
 			<td>{postal_code}</td>
 		</tr>
 	</table>
-		<div class="showInst-Teachers">Show Teachers</div>
+		<div class="showInst-Teachers showMoreButton">Show Teachers</div>
 		<div class="inst-Teachers">
 			{#teachers_}
-				{fullname} <br>
+				<div class=one-item>
+				  <a class="item-link" href="/Teachers/{personal_code}">{fullname}</a>
+				</div>
 			{/teachers_}
 		</div>
-		<div class="showInst-Students">Show Students</div>
+		<div class="showInst-Students showMoreButton">Show Students</div>
 		<div class="inst-Students">
 			{#students_}
-				{fullname} <br>
+				<div class=one-item>
+				  <a class="item-link" href="/Students/{personal_code}">{fullname}</a>
+				</div>
 			{/students_}
 		</div>
-		<div class="showInst-Project">Show Project</div>
+		<div class="showInst-Project showMoreButton">Show Project</div>
 		<div class="inst-Project">
 			{#projects_}
-				{name} <br>
+				<div class=one-item>
+				  <a class="item-link" href="/Projects/{id}">{name}</a>
+				</div>
 			{/projects_}
 		</div>
 	</div>
@@ -68,8 +75,8 @@
 
 	<div class="functions">
 		<div class="edit-button">Edit</div>
-		<form action="/Institutes/delete/{id}" method="post">
-			<input type="submit" name="deleteForm" value=Delete />
+		<form action="/Institutes/delete/{id}"  id="delete-form" method="post">
+			<div class="delete-button">Delete</div>
 		</form>
 		
 	</div>
