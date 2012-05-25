@@ -1,10 +1,51 @@
+body{
+	background-color: #ffad00;
+	padding-top: 0;
+	margin: 0;
+}
 .main{
+	padding: 20px;
 	margin: auto;
+	margin-top: 0;
 	width: 800px;
+	background-color: #f0ecda;
 }
 .footer{
 	clear: both;
 }
+.title{
+	text-transform: uppercase;
+	font-size: 18pt;
+	font-weight: bold;
+	color: #07687f;
+	margin-bottom: 7px;
+}
 .goHome {
 	margin: 0 350px;
+}
+.action, .functional{
+	width: 50%;
+	min-height: 100px;
+	float: left;
+}
+.functional{
+	background-color: gray;
+}
+.item-link{
+	background-repeat: no-repeat;
+	padding-left: 20px;
+	color: #a60800;
+	text-decoration: none;
+}
+.one-item{
+	margin-top: 5px;
+}
+.item-link:hover{
+	cursor: pointer;
+	background-image: url('/public/images/red-icon.png');
+	text-decoration: underline;
+}
+.criterion{
+	font-size: 14pt;
+	color: #07687f;
 }

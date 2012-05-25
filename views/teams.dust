@@ -1,20 +1,19 @@
 {>page/}
 {<main}
+	<div class="title">Teams</div>
 	<div class="action">
-		<div class="sort"></div>
 		<div class="list">
 			{#root}
-				<a class="item" href="/Teams/{id}">link</a>
-				<b>{name}</b>
-				{#project_}
-					{name} - {#institute_} {country}{/institute_}
-				{/project_}
-				<br>
+				<div class=one-item>
+				  <a class="item-link" href="/Teams/{id}" >{name}</a> 
+					({#project_}{name} - {#institute_} {country}{/institute_}{/project_})
+				</div>
 			{/root}
 		</div>
+	</div>
+	<div class="functional">
 		<div class="new">	<a class="add-new" href="Teams/new">Add new Team</a></div>
 	</div>
-	<div class="search"></div>
 	<br>
 {/main}
 

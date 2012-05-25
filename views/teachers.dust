@@ -1,23 +1,24 @@
 {>page/}
 
 {<main}
+	<div class="title">Teachers</div>
 	{#root}
 		<div class="action">
-			<div class="sort"></div>
 			<div class="list">
 				{#institutes_}
-					<b>{name}</b><br>
+					<div class="criterion">{name}</div>
 					{#teachers_}
-						<a class="item" href="/Teachers/{personal_code}">link</a>
-						{fullname}
-						<br>
+						<div class="one-item">
+							<a class="item-link" href="/Teachers/{personal_code}">{fullname}</a>
+						</div>
 					{/teachers_}
 					<br>
 				{/institutes_}
 			</div>
+		</div>
+		<div class="functional">
 			<div class="new">	<a class="add-new" href="Teachers/new">+ Add new Teachers</a></div>
 		</div>
-		<div class="search"></div>
 		<br>
 	{/root}
 {/main}
