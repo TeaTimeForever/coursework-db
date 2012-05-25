@@ -1,26 +1,40 @@
 {>page/}
 {<main}
+<div class="title">Students</div>
 {#root}
 	<div class="action">
-		<div class="sort"><a href="/Students">by institutes</a></div>
 		<div class="list">
 			{#teams_}
-				<b>{name}</b><br>
+				<div class="criterion">{name}</div>
 				{#members_}
 					{#students_}
-						<a class="item" href="/Students/{personal_code}">link</a>
-						{fullname}
+					<div class=one-item>
+					  <a class="item-link" href="/Students/{personal_code}" >{fullname}</a>
+					</div>
 					{/students_}
-				<br>
 				{/members_}
-				<br>
+			<br>
 			{/teams_}
+		</div>
+		<br>
+	</div>
+	<div class="functional">
+		<div class="sort">
+			<a href="/Students">by institutes</a><br>
+			<a href="/StudentsOrd/lastname">by lastname</a><br>
+			<a href="/StudentsOrd/firstname">by firstname</a><br>
 		</div>
 		<br>
 		<div class="new">	<a class="add-new" href="Students/new">+ Add new Student</a></div>
 	</div>
-	<div class="search"></div>
-	<br>
 {/root}
 {/main}
+
+
+
+
+
+
+
+
 
