@@ -25,23 +25,13 @@
 		<div class="functional">
 		{#root}
 			<div class="statistics">
-				For all the time participated {#stCount}{count}{/stCount} students, 
-				{#tcCount}{count}{/tcCount} teachers, and they worked on 
-				{#prCount}{count}{/prCount} projects.
-			</div>
-			<div class="ended-projects">
-				<div class="endedProj-button">Show ended Projects</div>	
-				<div class="endedProj">
-					{#projects}<a href="/Projects/{id}" class="item-link">{name}</a><br>{/projects}
-				</div>
-			</div>
+				For all the time participated {.} students
+			</div>	
 		{/root}
 		</div>
 		{/main}
 		<br>
 		<div class="footer">
-			<br>
-			<br>
 			{+footer}
 				<a href="/" class="goHome">Go to home</a>
 			{/footer}

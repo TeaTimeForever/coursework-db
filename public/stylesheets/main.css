@@ -42,7 +42,6 @@ body{
 	float: left;
 }
 .functional{
-	background-color: gray;
 }
 .item-link{
 	background-repeat: no-repeat;
@@ -62,4 +61,20 @@ body{
 	font-size: 14pt;
 	color: #07687f;
 }
-
+.endedProj-button{
+	width: 150px;
+	background-color: #07687f;
+	text-align: center;
+	color: #f0ecda;
+	font-size: 14pt;
+	margin-top: 10px;
+	padding: 5px;
+	border-radius: 5px;
+}
+.endedProj-button:hover{
+	cursor: pointer;
+	background-color: #1c525f;
+}
+.endedProj{
+	display: none;
+}

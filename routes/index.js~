@@ -24,10 +24,10 @@ var queries = {
 			  "left join team_members as tm on tm.personal_code = s.personal_code " +
 				"where tm.team_id is null",
 	countOfInstitutes: "select count(*) from institutes ",
-	countOfStudents: "select count(*) as count from students ",
-	countOfProjects: "select count(*) as count from projects ",
-	countOfTeachers: "select count(*) as count from teachers ",
-	countOfEndedProjects: "select count(*) as count from projects as p " +
+	countOfStudents: "select count(*) from students ",
+	countOfProjects: "selct count(*) from projects ",
+	countOfTeachers: "select count(*) from teachers ",
+	countOfEndedProjects: "select count(*) from projects as p " +
 				"where p.end_date < CURDATE() ",
 	endedProjects: "select p.name from projects as p " +
 				"where p.end_date < CURDATE() "
@@ -51,7 +51,6 @@ function addMeta(root){
 			{ src: '/javascripts/oneStudent.js'},
 			{ src: '/javascripts/oneTeam.js'},
 			{ src: '/javascripts/oneObject.js'},
-			{ src: '/javascripts/page.js'},
 			{ src: '/javascripts/create.js'}
 		],
 		styles: [
@@ -75,23 +74,12 @@ var all = makeCollections(db, models);
 
 function start(){ 
   exports.index = function(req, res){
-		res.render('page', addMeta({
-			stCount:(function(cb){
-				db.query(queries.countOfStudents, cb);
-			}).dustify(),
-			tcCount:(function(cb){
-				db.query(queries.countOfTeachers, cb);
-			}).dustify(),
-			prCount:(function(cb){
-				db.query(queries.countOfProjects, cb);
-			}).dustify(),
-			projects:(function(cb){
-				db.query(queries.endedProjects, cb);
-			}).dustify()
 
-
-		}));
-  };
+			res.render('page', addMeta({
+				studentsCount: all.students({sql: queries.countOfStudents}).dustify(),
+				teachersCount: all.teachers({sql: queries.countOfTeachers}).dustify()
+			}));
+    };
    
 // INSTITUTES
     exports.institutes = function(req, res){
