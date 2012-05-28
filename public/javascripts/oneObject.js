@@ -21,7 +21,7 @@ jQuery(function(){
 		$info.css('display', 'block');
 	});
 	$deleteButton.click(function(){
-		var answer = confirm ("Are you sure you want to delete this Institute?");
+		var answer = confirm ("Are you sure you want to delete this item?");
 		if (answer){
 			$('#delete-form').submit();
 		}

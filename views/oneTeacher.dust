@@ -61,7 +61,7 @@
 	
 	<div class="functions">
 		<div class="edit-button">Edit</div>
-		<form action="/Teachers/delete/{personal_code}" method="post">
+		<form action="/Teachers/delete/{personal_code}" method="post" id="delete-form">
 			<div class="delete-button">Delete</div>
 		</form>
 	</div>

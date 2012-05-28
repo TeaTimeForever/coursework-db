@@ -36,7 +36,7 @@
 	</div>
 		
 	<div class="edit-mode">
-		<form action="/Institutes/edit/{id}" id="edit-form" method="post">
+		<form action="/Projects/edit/{id}" id="edit-form" method="post">
 			<table>
 				<tr>
 					<td>Name: </td>
@@ -54,6 +54,14 @@
 					<td>End: </td>
 					<td><input type="text" name="project[end_date]" value="{end_date}"/></td>
 				</tr>
+				<tr>
+					<td>Mark: </td>
+					<td><input type="text" name="project[mark]" value="{mark}"/></td>
+				</tr>
+				<tr>
+					<td>Description: </td>
+					<td><textarea id="" name="project[description]" rows="10" cols="30">{description}</textarea></td>
+				</tr>
 			</table>
 			<div class="save-button">Save</div>
 			<div class="cancel-button">Cancel</div>
@@ -62,7 +70,7 @@
 
 	<div class="functions">
 		<div class="edit-button">Edit</div>
-		<form action="/Projects/delete/{id}" method="post">
+		<form action="/Projects/delete/{id}" method="post" id="delete-form">
 			<div class="delete-button">Delete</div>
 		</form>
 	</div>

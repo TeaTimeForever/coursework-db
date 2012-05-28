@@ -69,7 +69,7 @@
 	
 		<div class="functions">
 			<div class="edit-button">Edit</div>
-			<form action="/Teams/delete/{id}" method="post">
+			<form action="/Teams/delete/{id}" method="post" id="delete-form">
 				<div class="delete-button">Delete</div>
 			</form>
 		</div>

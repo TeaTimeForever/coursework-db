@@ -8,10 +8,10 @@
 					<td><input type="text" name="team[name]" /></td>
 				</tr>
 				<tr>
-					<td>Institute:</td>
+					<td>Project:</td>
 					<td>
 						<select type="text" name="team[project_id]" />
-							{#projects_}<option value="{id}">{name}</option>{/projects_}
+							{#root}<option value="{id}">{name}</option>{/root}
 						</select>
 					</td>
 				</tr>
